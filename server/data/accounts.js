@@ -49,6 +49,12 @@ export async function getAll() {
   return Account.findAll({ ...ORDER_DESC });
 }
 
+export async function getById(id) {
+  return Account.findAll({
+    where: { id },
+  });
+}
+
 export async function create(
   income,
   incomeTag,
@@ -92,7 +98,7 @@ export async function update(
 }
 
 export async function remove(id) {
-  return findByPk(id).then((account) => {
+  return Account.findByPk(id).then((account) => {
     account.destroy();
   });
 }
