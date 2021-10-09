@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import 'express-async-errors';
 import accountRouter from './router/accounts.js';
 import authRouter from './router/auth.js';
+import tagRouter from './router/tag.js';
 import { config } from './config.js';
 import { sequelize } from './db/database.js';
 
@@ -16,6 +17,7 @@ app.use(morgan('tiny'));
 
 app.use('/', accountRouter);
 app.use('/auth', authRouter);
+app.use('/tag', tagRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);
