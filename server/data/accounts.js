@@ -1,7 +1,8 @@
 import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
+import { User } from './auth.js';
 
-// const Sequelize = SQ.Sequelize;
+const Sequelize = SQ.Sequelize;
 const DataTypes = SQ.DataTypes;
 
 const Account = sequelize.define('account', {
@@ -40,18 +41,52 @@ const Account = sequelize.define('account', {
     allowNull: false,
   },
 });
+Account.belongsTo(User);
+
+const INCLUDE_USER = {
+  attributes: [
+    'id',
+    'income',
+    'incomeTag',
+    'expenditure',
+    'expenditureTag',
+    'year',
+    'month',
+    'day',
+    'createdAt',
+    'userId',
+    [Sequelize.col('user.name'), 'name'],
+    [Sequelize.col('user.username'), 'username'],
+  ],
+  include: {
+    model: User,
+    attributes: [],
+  },
+};
 
 const ORDER_DESC = {
   order: [['createdAt', 'DESC']],
 };
 
 export async function getAll() {
-  return Account.findAll({ ...ORDER_DESC });
+  return Account.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
+}
+
+export async function getAllByUsername(username) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    ...ORDER_DESC,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+  });
 }
 
 export async function getById(id) {
   return Account.findAll({
     where: { id },
+    ...INCLUDE_USER,
   });
 }
 
@@ -62,7 +97,8 @@ export async function create(
   expenditureTag,
   year,
   month,
-  day
+  day,
+  userId
 ) {
   return Account.create({
     income,
@@ -72,6 +108,7 @@ export async function create(
     year,
     month,
     day,
+    userId,
   }).then((data) => this.getById(data.dataValues.id));
 }
 
@@ -85,7 +122,7 @@ export async function update(
   month,
   day
 ) {
-  return Account.findByPk(id).then((account) => {
+  return Account.findByPk(id, INCLUDE_USER).then((account) => {
     account.income = income;
     account.incomeTag = incomeTag;
     account.expenditure = expenditure;

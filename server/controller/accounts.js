@@ -1,7 +1,10 @@
 import * as accountRepository from '../data/accounts.js';
 
 export async function getAccounts(req, res) {
-  const data = await accountRepository.getAll();
+  const username = req.query.username;
+  const data = await (username
+    ? accountRepository.getAll()
+    : accountRepository.getAllByUsername(username));
   res.status(200).json(data);
 }
 
@@ -15,7 +18,8 @@ export async function createAccount(req, res, next) {
     expenditureTag,
     year,
     month,
-    day
+    day,
+    req.userId
   );
   res.status(201).json(account);
 }
