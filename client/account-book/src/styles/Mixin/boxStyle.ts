@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const flexBox = (hoz: string, ver: string, display = 'flex') => {
+const flexBox = (hoz: string | null, ver: string | null, display = 'flex') => {
   return css`
     display: ${display};
     ${hoz && `justify-content: ${hoz}`}
