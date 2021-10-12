@@ -2,10 +2,11 @@ import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import Route from './route/Route';
 import { history } from './redux/configureStore';
-import SignIn from './pages/SignIn';
+import Header from './components/Header';
 function App() {
   return (
     <ConnectedRouter history={history}>
+      <Header />
       <Route />
     </ConnectedRouter>
   );
