@@ -7,6 +7,7 @@ export interface Prop {
   padding?: string;
   height?: string;
   addstyle?: any;
+  bgColor?: string;
 }
 
 export const ColumnContainer = css`
@@ -20,13 +21,13 @@ const ContainerStyle = styled.div<Prop>`
   height: ${({ height }) => height};
   min-height: ${({ height }) => height || '100vh'};
   margin: 0 auto;
-  ${({ padding }) => borderBox((padding = '0'))};
+  ${({ padding }) => borderBox(padding!)};
   ${({ addstyle }) => addstyle};
   ${({ isFlex }) => isFlex && ColumnContainer};
 
   @media (max-width: 800px) {
     max-width: none;
-    width: 90%;
+    width: 100%;
   }
 `;
 

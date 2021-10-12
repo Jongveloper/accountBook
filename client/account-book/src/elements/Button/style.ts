@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { borderBox, flexBox } from '../../styles/Mixin';
+import { flexBox } from '../../styles/Mixin';
 
 export interface Prop {
   isFlex?: boolean;
@@ -34,6 +34,8 @@ const ButtonStyle = styled.button<Prop>`
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   border-radius: ${({ radius }) => radius};
+  background-color: ${({ bgColor, theme }) => theme.color[bgColor!]};
+  color: ${({ color, theme }) => theme.color[color!]};
   cursor: pointer;
   border: ${({ border }) => border};
   font-size: ${({ fs, theme }) => fs && theme.fontSize[fs]};

@@ -13,6 +13,7 @@ export interface Props {
   addstyle?: any;
   id?: string;
   type?: string;
+  margin?: string;
   name?: string;
   value?: string;
   accept?: string;
@@ -54,7 +55,8 @@ Input.defaultProps = {
   bgColor: 'white',
   padding: '0 12px',
   radius: '14px',
-  border: '1px solid black'
+  border: '1px solid white',
+  margin: '20px auto'
 }
 
 export default Input;

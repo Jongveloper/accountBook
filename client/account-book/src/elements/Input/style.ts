@@ -12,6 +12,7 @@ export interface Prop {
   shadow?: string;
   padding?: string;
   addstyle?: any;
+  margin?: string;
   theme: {
     [propName: string]: any;
   };
@@ -21,6 +22,7 @@ const InputStyle = styled.input<Prop>`
   border: ${({ border }) => border};
   background: none;
   border-radius: ${({ radius }) => radius};
+  margin: ${({ margin }) => margin};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background-color: ${({ bgColor, theme }) =>
@@ -28,7 +30,7 @@ const InputStyle = styled.input<Prop>`
   color: ${({ color, theme }) => theme.color[(color = 'black')]};
   font-size: ${({ fs, theme }) => fs && theme.fontSize[fs]};
   box-shadow: ${({ shadow }) => shadow};
-  ${({ padding }) => borderBox((padding = '0'))};
+  ${({ padding }) => borderBox(padding!)};
 
   &:focus {
     outline: none;
