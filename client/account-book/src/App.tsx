@@ -1,8 +1,13 @@
 import React from 'react';
-import SignIn from './components/SignIn';
+import { ConnectedRouter } from 'connected-react-router';
+import Route from './route/Route';
+import { history } from './redux/configureStore';
+import SignIn from './pages/SignIn';
 function App() {
   return (
-    <SignIn />
+    <ConnectedRouter history={history}>
+      <Route />
+    </ConnectedRouter>
   );
 }
 
