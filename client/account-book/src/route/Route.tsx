@@ -16,7 +16,7 @@ const Route = () => {
       <Section>
         <Switch>
           <PublicRoute path={pathURI.signIn} component={SignIn} exact />
-          <PublicRoute path={pathURI.home} component={Home} />
+          <PublicRoute path={pathURI.home} component={Home} exact />
         </Switch>
       </Section>
     </>
