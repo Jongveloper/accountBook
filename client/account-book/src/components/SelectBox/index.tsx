@@ -43,6 +43,7 @@ export default function SelectBox() {
         <NativeSelect
           value={Year}
           onChange={(e) => handleYearChange(e)}
+          sx={{ marginRight: '5px' }}
         >
           {year.map((i) => <option key={i} value={i}>{i}</option>)}
         </NativeSelect>
