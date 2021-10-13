@@ -20,6 +20,7 @@ const NavigationStyle = styled.ul<Prop>`
   cursor: pointer;
   transform: translate(-50%);
   z-index: 3;
+  border-top: 1px solid #c1c1c1;
 `;
 
 const NavigationIcons = styled.li<Prop>`
