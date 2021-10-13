@@ -13,6 +13,7 @@ export interface Props {
   radius?: string;
   overflow?: string;
   padding?: string;
+  bottom?: string;
   border?: string;
   fs?: string;
   fw?: string;
