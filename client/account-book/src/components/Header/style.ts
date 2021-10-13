@@ -13,7 +13,7 @@ const HeaderStyle = styled.header<Prop>`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 3;
   background-color: ${({ theme }) => theme.color.olive};
   color: ${({ theme }) => theme.color.white};
 `;

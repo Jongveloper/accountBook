@@ -1,14 +1,14 @@
 const pathURI = {
-  home: '/',
+  home: '/home',
   chart: '/chart',
   signUp: '/signup',
-  signIn: '/signin',
+  signIn: '/',
   calendar: '/calendar',
   info: '/info',
 };
 
 const HeaderIncluded: string[] = [
-  '/',
+  '/home',
   '/chart',
   '/signUp',
   '/calendar',

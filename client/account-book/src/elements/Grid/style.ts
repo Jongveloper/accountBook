@@ -13,6 +13,7 @@ export interface Prop {
   bgColor?: string;
   radius?: string;
   overflow?: string;
+  bottom?: string;
   padding?: string;
   border?: string;
   fs?: string;
@@ -44,7 +45,7 @@ const GridStyle = styled.div<Prop>`
   border-radius: ${({ radius }) => radius};
   overflow: ${({ overflow }) => overflow};
   cursor: ${({ cursor }) => cursor};
-  ${({ padding }) => borderBox((padding = '0'))};
+  ${({ padding }) => borderBox(padding!)};
   ${({ fs, fw, color, lh, textAlign }) =>
     textProps(
       (fs = 'md'),
