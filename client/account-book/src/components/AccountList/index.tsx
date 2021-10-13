@@ -12,7 +12,7 @@ const AccountList = () => {
         </AccountDateStyle>
         <AccountContentStyle>
           <p>$ 커피</p>
-          <p style={{ color: 'red' }}>-10000원</p>
+          <p style={{ color: 'red' }}>-100원</p>
         </AccountContentStyle>
         <AccountTagStyle>
           <p>식품/음료</p>
@@ -26,7 +26,7 @@ const AccountList = () => {
         </AccountDateStyle>
         <AccountContentStyle>
           <p>$ 커피</p>
-          <p style={{ color: 'red' }}>-10000원</p>
+          <p style={{ color: 'red' }}>-100원</p>
         </AccountContentStyle>
         <AccountTagStyle>
           <p>식품/음료</p>
