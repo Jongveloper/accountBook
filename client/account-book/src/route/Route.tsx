@@ -7,6 +7,7 @@ import { pathURI } from './Path';
 
 //pages
 import SignIn from '../pages/SignIn';
+import Home from '../pages/Home';
 
 import { Section } from '../elements';
 const Route = () => {
@@ -15,6 +16,7 @@ const Route = () => {
       <Section>
         <Switch>
           <PublicRoute path={pathURI.signIn} component={SignIn} exact />
+          <PublicRoute path={pathURI.home} component={Home} />
         </Switch>
       </Section>
     </>
