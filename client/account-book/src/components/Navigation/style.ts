@@ -8,7 +8,7 @@ interface Prop {
 
 const NavigationStyle = styled.ul<Prop>`
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 100%;
   max-width: 768px;
   left: 50%;
