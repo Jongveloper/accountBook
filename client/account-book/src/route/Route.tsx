@@ -9,6 +9,7 @@ import { pathURI } from './Path';
 import SignIn from '../pages/SignIn';
 import Home from '../pages/Home';
 import Calendar from '../components/Calendar';
+import WriteAccount from '../pages/WriteAccount';
 
 import { Section } from '../elements';
 const Route = () => {
@@ -19,6 +20,7 @@ const Route = () => {
           <PublicRoute path={pathURI.signIn} component={SignIn} exact />
           <PublicRoute path={pathURI.home} component={Home} exact />
           <PublicRoute path={pathURI.calendar} component={Calendar} exact />
+          <PublicRoute path={pathURI.write} component={WriteAccount} exact />
         </Switch>
       </Section>
     </>

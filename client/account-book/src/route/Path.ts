@@ -5,6 +5,7 @@ const pathURI = {
   signIn: '/',
   calendar: '/calendar',
   info: '/info',
+  write: '/write',
 };
 
 const HeaderIncluded: string[] = [
@@ -13,6 +14,7 @@ const HeaderIncluded: string[] = [
   '/signUp',
   '/calendar',
   '/info',
+  '/write',
 ];
 
 export { pathURI, HeaderIncluded };
