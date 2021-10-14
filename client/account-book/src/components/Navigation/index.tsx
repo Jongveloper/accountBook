@@ -50,7 +50,8 @@ const Navigation = () => {
             border='none'
             height='40px'
             color='white'
-            fs='xl'>+</Button>
+            fs='xl'
+            _onClick={() => history.push('/write')}>+</Button>
           <NavigationIcons
             className={path.includes('/calendar') ? 'Click' : ''}
             onClick={() => history.push('/calendar')}>
