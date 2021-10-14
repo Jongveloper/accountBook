@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
@@ -29,11 +29,11 @@ export default function SelectBox() {
   const handleMonthChange = (e: any) => {
     setMonth(e.target.value)
   }
-  const getDate = () => {
+  const getDate = useCallback(() => {
     const year = `${Year}`
     const month = `${Month}`
     console.log(year, month)
-  }
+  }, [Year, Month])
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl>
