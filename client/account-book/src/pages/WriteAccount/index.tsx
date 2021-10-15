@@ -12,10 +12,10 @@ const WriteAccount = (): React.ReactElement => {
       position: fixed;
       `;
     }}>
-      <Grid>
+      <Grid textAlign='center'>
         <img src={Money} width='300px' height='250px' alt='이미지' />
       </Grid>
-      <Grid textAlign='center' width='100%' margin='0px auto 50px auto' height='auto' position='relative'>
+      <Grid textAlign='center' width='100%' margin='-20px auto 50px auto' height='auto' position='relative'>
         <SelectBoxDay />
       </Grid>
       <Grid>
