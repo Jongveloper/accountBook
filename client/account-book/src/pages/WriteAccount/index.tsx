@@ -1,15 +1,22 @@
 import React from 'react';
 import { Container, Grid } from '../../elements';
 import SelectBoxDay from '../../components/SelectBoxDay';
-
+import WriteForm from '../../components/WriteForm'
+// image
+import Money from '../../img/money-image.png'
 const WriteAccount = (): React.ReactElement => {
   return (
     <Container padding='30px'>
-      <Grid width='100%' margin='50px auto' height='auto' position='relative'>
+      <Grid>
+        <img src={Money} width='300px' height='250px' alt='메인이미지'
+          style={{ marginTop: '0px' }}
+        />
+      </Grid>
+      <Grid width='100%' margin='0px auto 50px auto' height='auto' position='relative'>
         <SelectBoxDay />
       </Grid>
       <Grid>
-
+        <WriteForm />
       </Grid>
     </Container>
   )
