@@ -9,7 +9,7 @@ const Chart = () => {
   ]
   return (
     <>
-      <Grid textAlign='center' margin='auto' >
+      <Grid textAlign='center'>
         <Grid
           textAlign='left'
         >
