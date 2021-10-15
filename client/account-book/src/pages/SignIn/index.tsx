@@ -10,7 +10,7 @@ const SignIn = (): React.ReactElement => {
         background-color: #B6C8A5;
       `;
     }}>
-      <Grid height='300px' position='relative' >
+      <Grid height='300px' textAlign='center' >
         <h1 style={{ marginTop: '60px', fontSize: '45px', fontWeight: 'bold', color: 'white' }}>알뜰 살뜰 가계부</h1>
         <img src={Money} width='300px' height='300px' alt='메인이미지'
           style={{ marginTop: '60px' }}
