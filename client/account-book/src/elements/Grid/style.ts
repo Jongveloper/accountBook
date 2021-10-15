@@ -52,7 +52,7 @@ const GridStyle = styled.div<Prop>`
       (fw = 'regular'),
       (color = 'black'),
       (lh = '0'),
-      (textAlign = 'center')
+      textAlign!
     )};
   ${({ addstyle }) => addstyle};
 `;
