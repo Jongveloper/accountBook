@@ -9,7 +9,7 @@ const TagForm = () => {
       <Input
         width='70%'
         height='40px'
-        margin='20px 5px'
+        margin='0 5px 20px 5px'
         border='5px solid #B6C8A5'
         placeholder='추가 할 태그를 입력해주세요'
         addstyle={() => {
