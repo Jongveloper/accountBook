@@ -30,7 +30,7 @@ const Chart = () => {
           }}
         />
       </Grid>
-      <Grid margin='35px 0 0 0'>
+      <Grid margin='35px 0 0 0' border='1px solid #B6C8A5'>
         {data.map((tag, idx) => {
           return (
             <Grid isFlex
@@ -40,7 +40,11 @@ const Chart = () => {
             `;
               }}>
               <p key={idx} style={{ fontWeight: 'bold', color: tag.color, minHeight: '30px', marginRight: '160px' }}>{tag.title}</p>
-              <p key={idx} style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>{tag.income ? tag.income : tag.spend}</p>
+              <p key={idx} style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
+                {tag.income ? Number(tag.income).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  :
+                  Number(tag.spend).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
+              </p>
             </Grid>
           )
         })}
