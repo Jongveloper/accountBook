@@ -9,7 +9,7 @@ const Home = (): React.ReactElement => {
       <Grid width='100%' margin='25px auto' height='auto' position='relative'>
         <Month />
       </Grid>
-      <Grid margin='0 0 0 -65px'>
+      <Grid margin='0 0 0 0px'>
         <SelectBox />
       </Grid>
       <Grid margin='20px 0 0 0'>

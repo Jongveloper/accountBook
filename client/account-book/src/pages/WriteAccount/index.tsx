@@ -15,7 +15,7 @@ const WriteAccount = (): React.ReactElement => {
       <Grid>
         <img src={Money} width='300px' height='250px' alt='이미지' />
       </Grid>
-      <Grid width='100%' margin='0px auto 50px auto' height='auto' position='relative'>
+      <Grid textAlign='center' width='100%' margin='0px auto 50px auto' height='auto' position='relative'>
         <SelectBoxDay />
       </Grid>
       <Grid>

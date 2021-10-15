@@ -15,6 +15,7 @@ const MonthStyle = styled.div<Prop>`
   margin: auto;
   font-size: 40px;
   font-weight: bold;
+  text-align: center;
 `;
 
 export default MonthStyle;
