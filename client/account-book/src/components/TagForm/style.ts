@@ -8,8 +8,8 @@ interface Prop {
 
 const TagFormStyle = styled.form<Prop>`
   width: 100%;
-  position: fixed;
   max-width: 768px;
+  display: inline-block;
 `;
 
 export { TagFormStyle };
