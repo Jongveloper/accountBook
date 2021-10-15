@@ -10,7 +10,7 @@ const TagListStyle = styled.ul<Prop>`
   width: 80%;
   max-width: 768px;
   margin: auto;
-  height: 150px;
+  height: 300px;
   border: 5px solid #b6c8a5;
   border-radius: 15px;
   list-style: disc;
