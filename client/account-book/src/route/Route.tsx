@@ -12,6 +12,7 @@ import Calendar from '../components/Calendar';
 import WriteAccount from '../pages/WriteAccount';
 import Statistics from '../pages/Statistics';
 import Info from '../pages/Info';
+import SignUp from '../pages/SignUp';
 
 import { Section } from '../elements';
 const Route = () => {
@@ -25,6 +26,7 @@ const Route = () => {
           <PublicRoute path={pathURI.write} component={WriteAccount} exact />
           <PublicRoute path={pathURI.chart} component={Statistics} exact />
           <PublicRoute path={pathURI.info} component={Info} exact />
+          <PublicRoute path={pathURI.signUp} component={SignUp} exact />
         </Switch>
       </Section>
     </>

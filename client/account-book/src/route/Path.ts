@@ -11,7 +11,7 @@ const pathURI = {
 const HeaderIncluded: string[] = [
   '/home',
   '/chart',
-  '/signUp',
+  '/signup',
   '/calendar',
   '/info',
   '/write',
