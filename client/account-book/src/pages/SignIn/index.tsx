@@ -1,4 +1,5 @@
 import React from 'react';
+import { history } from '../../redux/configureStore';
 import { css } from 'styled-components';
 //elements
 import { Grid, Button, Input, Container } from '../../elements';
@@ -18,7 +19,8 @@ const SignIn = (): React.ReactElement => {
         <Input border='none' margin='30px auto' placeholder='아이디를 입력하세요' padding='16px' />
         <Input border='none' placeholder='비밀번호를 입력하세요' padding='16px' margin='2px auto' />
         <Button bgColor='black' color='white' border='none' width='70px' height='50px' margin='40px 30px 0 0'>로그인</Button>
-        <Button bgColor='black' color='white' border='none' width='70px' height='50px' margin='40px 0 0 0'>회원가입</Button>
+        <Button bgColor='black' color='white' border='none' width='70px' height='50px' margin='40px 0 0 0'
+          _onClick={() => { history.push('/signup') }}>회원가입</Button>
       </Grid>
     </Container>
   )
