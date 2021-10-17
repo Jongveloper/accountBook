@@ -11,7 +11,14 @@ import { sequelize } from './db/database.js';
 
 const app = express();
 
+const corsOption = {
+  origin: config.cors.allowedOrigin,
+  optionSuccessStatus: 200,
+  credentials: true,
+};
+
 app.use(express.json());
+app.use(cors(corsOption));
 app.use(helmet());
 app.use(morgan('tiny'));
 
