@@ -46,7 +46,7 @@ const WriteForm = () => {
   }, [Year, Month, DateTime])
   return (
     <>
-      <Grid textAlign='center' width='100%' margin='-20px auto 50px auto' height='auto' position='relative'>
+      <Grid textAlign='center' width='100%' margin='-20px auto 50px auto' height='auto'>
         <Box sx={{ minWidth: 120 }}>
           <FormControl>
             <InputLabel variant="standard" htmlFor="uncontrolled-native">
