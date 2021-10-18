@@ -6,11 +6,7 @@ import WriteForm from '../../components/WriteForm'
 import Money from '../../img/money-image.png'
 const WriteAccount = (): React.ReactElement => {
   return (
-    <Container padding='30px' addstyle={() => {
-      return css`
-      position: fixed;
-      `;
-    }}>
+    <Container padding='30px'>
       <Grid textAlign='center'>
         <img src={Money} width='300px' height='250px' alt='이미지' />
       </Grid>
