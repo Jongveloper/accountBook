@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useMemo, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TagListStyle } from './style';
 
+//redux
+import { getTagDB } from '../../redux/modules/TagModule/tag';
+
+
 const TagList = () => {
+  const dispatch = useDispatch();
+  const tagState = useSelector((state) => state.tag.tag)
+  const userState = useSelector((state) => state.user.user_info.username)
+  console.log(userState.length)
+  useEffect(() => {
+    dispatch(getTagDB(userState))
+  }, [tagState.length])
+
   return (
     <TagListStyle>
-      <li style={{ minHeight: '20px', fontWeight: 900 }}>식품</li>
+      {tagState.map((comment: any, idx: number) => {
+        return <li
+          style={{
+            minHeight: '20px',
+            fontWeight: 900,
+            color: comment.color
+          }}
+          key={idx}>{comment.tagName}</li>
+      })}
     </TagListStyle>
   )
 }

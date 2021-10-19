@@ -17,9 +17,9 @@ const TagForm = () => {
       color: randomColor[Math.floor(Math.random() * 5)]
     })
   }
-  console.log(tag)
   const handleAddTag = () => {
     dispatch(addTagDB(tag));
+    window.location.reload()
   }
   return (
     <TagFormStyle>

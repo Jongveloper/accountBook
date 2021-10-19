@@ -8,7 +8,7 @@ import { history } from '../../configureStore';
 import { SignInType } from '../../../shared/ApiTypes';
 import { useHistory } from 'react-router-dom';
 const initialState = {
-  user_info: { name: 'jong' },
+  user_info: { username: '' },
   is_login: false,
 };
 
@@ -22,6 +22,11 @@ const user = createSlice({
     logOut: (state, action) => {
       delToken();
       state.is_login = false;
+    },
+    SetUser: (state, action) => {
+      state.user_info.username = action.payload;
+      setToken(action.payload.token);
+      state.is_login = true;
     },
   },
 });
@@ -40,18 +45,22 @@ export const signUpDB = (user_info: SignUpType) => async () => {
   }
 };
 
-export const SignInDB = (userInfo: SignInType): void => {
-  apis
-    .SignIn(userInfo)
-    .then(({ data }: any) => {
-      setToken(data.token);
-      setUserInfo('userInfo', jwtDecode(data.token));
-      history.push('/home');
-    })
-    .catch((err) => {
-      console.error(err);
-      window.location.reload();
-    });
+export const SignInDB = (userInfo: SignInType) => {
+  return function (dispatch: any) {
+    apis
+      .SignIn(userInfo)
+      .then(({ data }: any) => {
+        dispatch(SetUser(data.username));
+        setToken(data.token);
+        setUserInfo('userInfo', jwtDecode(data.token));
+        history.push('/home');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 };
+
+export const { SetUser, logOut, logCheck } = user.actions;
 
 export default user;
