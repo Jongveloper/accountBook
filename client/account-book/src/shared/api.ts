@@ -2,12 +2,12 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { history } from '../redux/configureStore';
 
-import { SignInType, SignUpType } from './ApiTypes';
+import { SignInType, SignUpType, TagType } from './ApiTypes';
 
 import { getToken, delToken, setToken } from './token';
 import { setUserInfo, delUserInfo } from './userInfo';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'http://localhost:8080',
   withCredentials: true,
   timeout: 3000,
@@ -16,7 +16,7 @@ const instance = axios.create({
 instance.interceptors.request.use((config) => {
   config.headers!['Content-Type'] = 'application/json; charset=utf-8';
   config.headers!['X-Requested-With'] = 'XMLHttpRequest';
-  config.headers!.token = getToken()!;
+  config.headers!.token = getToken();
   config.headers!.Accept = 'application/json';
   return config;
 });
@@ -34,12 +34,12 @@ instance.interceptors.response.use(
       history.go(0);
     } else if (
       err.response.status === 401 &&
-      !['/signup', '/signin'].includes(path)
+      !['/signup', '/'].includes(path)
     ) {
       window.alert('토큰이 만료되었어요! 다시 로그인해주세요!');
-      delToken();
+      // delToken();
       delUserInfo('userInfo');
-      history.push('/signin');
+      history.push('/');
     }
     return Promise.reject(err);
   }
@@ -48,6 +48,9 @@ instance.interceptors.response.use(
 const apis = {
   SignUp: (user: SignUpType) => instance.post('/auth/signup', user),
   SignIn: (user: SignInType) => instance.post('/auth/login', user),
+  CreateTag: (tag: TagType) => instance.post('/tag', tag),
+  GetTag: (username: string) => instance.get(`/tag?username=${username}`),
+  DeleteTag: (id: number) => instance.delete(`/tag/${id}`),
 };
 
 export default apis;

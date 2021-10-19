@@ -1,8 +1,7 @@
 const getToken = () => {
   const value = `; ${document.cookie}`;
   const parts = value.split('; Authorization=');
-
-  return parts.pop()!.split(';').shift();
+  return parts.pop()!.split(';').shift()!;
 };
 
 const setToken = (token: string): void => {
