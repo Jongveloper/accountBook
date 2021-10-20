@@ -17,11 +17,12 @@ const TagList = () => {
   }
   useEffect(() => {
     dispatch(getTagDB(userState))
-  }, [])
+  }, [dispatch, userState])
+
 
   return (
     <TagListStyle>
-      {tagState.map((comment: any, idx: number) => {
+      {tagState.map((tag: any, idx: number) => {
         return (
           <>
             <Grid
@@ -34,10 +35,10 @@ const TagList = () => {
               <li
                 style={{
                   fontWeight: 900,
-                  color: comment.color,
+                  color: tag.color,
                   lineHeight: 2.5
                 }}
-                key={idx}>{comment.tagName}</li>
+                key={tag.id + idx}>{tag.tagName}</li>
               <Button
                 border='none'
                 width='25px'
@@ -45,7 +46,7 @@ const TagList = () => {
                 radius='5px'
                 margin='5px 0'
                 color='white'
-                _onClick={() => { handleDelete(comment.id) }}
+                _onClick={() => { handleDelete(tag.id) }}
               >x</Button>
             </Grid>
           </>)
