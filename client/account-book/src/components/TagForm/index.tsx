@@ -19,7 +19,6 @@ const TagForm = () => {
   }
   const handleAddTag = () => {
     dispatch(addTagDB(tag));
-    window.location.reload()
   }
   return (
     <TagFormStyle>
