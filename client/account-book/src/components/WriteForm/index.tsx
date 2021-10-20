@@ -43,6 +43,7 @@ const WriteForm = () => {
   const handleDateTimeChange = (e: any) => {
     setDateTime(e.target.value);
   }
+
   const getDate = useCallback(() => {
     const year = `${Year}`
     const month = `${Month}`
@@ -51,12 +52,15 @@ const WriteForm = () => {
   }, [Year, Month, DateTime])
   // 태그 선택
   const tagState = useSelector((state) => state.tag.tag)
-
   const userState = useSelector((state) => state.user.user_info.username)
-
+  const [Tag, setTag] = useState(tagState.tagName)
+  const handleTagChange = (e: any) => {
+    setTag(e.target.value)
+  }
   useEffect(() => {
     dispatch(getTagDB(userState))
   }, [])
+
   return (
     <>
       <Grid textAlign='center' width='100%' margin='-20px auto 50px auto' height='auto'>
@@ -110,8 +114,8 @@ const WriteForm = () => {
                 태그 선택
               </InputLabel>
               <NativeSelect
-                value={Month}
-                onChange={(e) => handleMonthChange(e)}
+                value={Tag}
+                onChange={(e) => handleTagChange(e)}
               >
                 {tagState.map((tag: any) => <option key={tag.id} value={tag.tagName}>{tag.tagName}</option>)}
               </NativeSelect>
