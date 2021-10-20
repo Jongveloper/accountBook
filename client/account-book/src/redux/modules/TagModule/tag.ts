@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import apis, { instance } from '../../../shared/api';
-import { getToken } from '../../../shared/token';
+import { getToken, isLogin } from '../../../shared/token';
 import type { RootState } from '../../configureStore';
-const token = getToken();
 
 const initialState = {
   tag: ['', ''],
@@ -27,6 +26,7 @@ export const tagSlice = createSlice({
 });
 
 export const addTagDB = (tag: any) => {
+  let token = getToken();
   return function (dispatch: any) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     console.log(instance.defaults.headers.common['Authorization']);
@@ -42,9 +42,9 @@ export const addTagDB = (tag: any) => {
 };
 
 export const getTagDB = (username: string) => {
+  let token = getToken();
   return function (dispatch: any) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // console.log(instance.defaults.headers.common['Authorization']);
     apis
       .GetTag(username)
       .then((res) => {

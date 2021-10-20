@@ -10,10 +10,9 @@ const TagList = () => {
   const dispatch = useDispatch();
   const tagState = useSelector((state) => state.tag.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-  console.log(userState.length)
   useEffect(() => {
     dispatch(getTagDB(userState))
-  }, [tagState.length])
+  }, [])
 
   return (
     <TagListStyle>
