@@ -33,14 +33,16 @@ const Chart = () => {
       <Grid margin='35px 0 0 0' border='1px solid #B6C8A5'>
         {data.map((tag, idx) => {
           return (
-            <Grid isFlex
+            <Grid
+              isFlex
+              key={idx}
               addstyle={() => {
                 return css`
               justify-content: space-between;
             `;
               }}>
-              <p key={idx} style={{ fontWeight: 'bold', color: tag.color, minHeight: '30px', marginRight: '160px' }}>{tag.title}</p>
-              <p key={idx} style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
+              <p style={{ fontWeight: 'bold', color: tag.color, minHeight: '30px', marginRight: '160px' }}>{tag.title}</p>
+              <p style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
                 {tag.income ? Number(tag.income).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                   :
                   Number(tag.spend).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
