@@ -15,9 +15,9 @@ export type TagType = {
 };
 
 export type AccountType = {
-  year: string;
-  month: string;
-  day: string;
+  year: number;
+  month: number;
+  day: number;
   tag: string;
   income: number;
   expenditure: number;
