@@ -7,12 +7,14 @@ import logger from 'redux-logger';
 import { connectRouter } from 'connected-react-router';
 
 import tagReducer from './modules/TagModule/tag';
+import accountReducer from './modules/AccountModule/account';
 import user from './modules/UserModule/user';
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   tag: tagReducer,
+  account: accountReducer,
   user: user.reducer,
   router: connectRouter(history),
 });
