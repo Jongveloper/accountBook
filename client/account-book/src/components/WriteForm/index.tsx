@@ -57,15 +57,19 @@ const WriteForm = () => {
   useEffect(() => {
     dispatch(getTagDB(userState))
   }, [])
-  // 수입, 지출
+  // 수입, 지출, 내용
   const [income, setIncome] = useState('0')
   const [expenditure, setExpenditure] = useState('0')
+  const [contents, setContents] = useState('')
 
   const handleIncomeChange = (e: any) => {
     setIncome(e.target.value)
   }
   const handleExpenditureChange = (e: any) => {
     setExpenditure(e.target.value)
+  }
+  const handleContentsChange = (e: any) => {
+    setContents(e.target.value)
   }
   // 날짜, 태그, 수입, 지출
   const account = {
@@ -74,7 +78,8 @@ const WriteForm = () => {
     tag: `${Tag}`,
     year: parseInt(`${Year}`),
     month: parseInt(`${Month}`),
-    day: parseInt(`${DateTime}`)
+    day: parseInt(`${DateTime}`),
+    contents
   }
   // Account 추가 이벤트
   const handleAddAccount = () => {
@@ -189,6 +194,26 @@ const WriteForm = () => {
             type='number'
             value={expenditure}
             _onChange={handleExpenditureChange} />
+        </Grid>
+
+        <Grid
+          textAlign='center'
+          margin='40px 0 0 0'
+          addstyle={() => {
+            return css`
+          justify-content: space-between;
+        `;
+          }}>
+          <label
+            style={{ fontWeight: 'bold', color: 'blue' }}
+          >내용</label>
+          <Input
+            border='2px solid #B6C8A5'
+            width='200px'
+            margin='0 10px'
+            height='40px'
+            placeholder='내용을 입력하세요.'
+            _onChange={handleContentsChange} />
         </Grid>
 
         <Grid textAlign='center'>
