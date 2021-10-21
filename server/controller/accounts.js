@@ -9,7 +9,7 @@ export async function getAccounts(req, res) {
 }
 
 export async function createAccount(req, res, next) {
-  const { income, expenditure, year, month, day, tag } = req.body;
+  const { income, expenditure, year, month, day, tag, contents } = req.body;
   const account = await accountRepository.create(
     income,
     expenditure,
@@ -17,6 +17,7 @@ export async function createAccount(req, res, next) {
     month,
     day,
     tag,
+    contents,
     req.userId
   );
   res.status(201).json(account);
@@ -30,6 +31,7 @@ export async function updateAccount(req, res, next) {
   const month = req.body.month;
   const day = req.body.day;
   const tag = req.body.tag;
+  const contents = req.body.contents;
   const account = await accountRepository.getById(id);
   if (!account) {
     return res.status(404).json({ message: `${id}를 찾을 수 없습니다.` });
@@ -41,7 +43,8 @@ export async function updateAccount(req, res, next) {
     year,
     month,
     day,
-    tag
+    tag,
+    contents
   );
   res.status(200).json(updated);
 }

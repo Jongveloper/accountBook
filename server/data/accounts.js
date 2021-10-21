@@ -34,7 +34,11 @@ const Account = sequelize.define('account', {
   },
   tag: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
+  },
+  contents: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 });
 Account.belongsTo(User);
@@ -48,6 +52,7 @@ const INCLUDE_USER = {
     'month',
     'day',
     'tag',
+    'contents',
     'createdAt',
     'userId',
     [Sequelize.col('user.name'), 'name'],
@@ -92,6 +97,7 @@ export async function create(
   month,
   day,
   tag,
+  contents,
   userId
 ) {
   return Account.create({
@@ -101,11 +107,21 @@ export async function create(
     month,
     day,
     tag,
+    contents,
     userId,
   }).then((data) => this.getById(data.dataValues.id));
 }
 
-export async function update(id, income, expenditure, year, month, day, tag) {
+export async function update(
+  id,
+  income,
+  expenditure,
+  year,
+  month,
+  day,
+  tag,
+  contents
+) {
   return Account.findByPk(id, INCLUDE_USER).then((account) => {
     account.income = income;
     account.expenditure = expenditure;
@@ -113,6 +129,7 @@ export async function update(id, income, expenditure, year, month, day, tag) {
     account.month = month;
     account.day = day;
     account.tag = tag;
+    account.contents = contents;
     return account.save();
   });
 }
