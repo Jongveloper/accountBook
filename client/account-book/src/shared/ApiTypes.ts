@@ -13,3 +13,12 @@ export type TagType = {
   tagname: string;
   color: string;
 };
+
+export type AccountType = {
+  year: string;
+  month: string;
+  day: string;
+  tag: string;
+  income: number;
+  expenditure: number;
+};
