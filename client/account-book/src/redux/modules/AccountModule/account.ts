@@ -32,6 +32,7 @@ export const accountSlice = createSlice({
 });
 
 export const addAccountDB = (account: any) => {
+  console.log(account);
   let token = getToken();
   return function (dispatch: any) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //style
 import WriteFormStyle from './style';
@@ -12,9 +12,11 @@ import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 //redux
 import { getTagDB } from '../../redux/modules/TagModule/tag';
+import { addAccountDB } from '../../redux/modules/AccountModule/account';
 
 const WriteForm = () => {
   const dispatch = useDispatch();
+  // 날짜 입력
   const day = new Date()
   const year = [];
   const startYear = 2000;
@@ -44,26 +46,46 @@ const WriteForm = () => {
     setDateTime(e.target.value);
   }
 
-  const getDate = useCallback(() => {
-    const year = `${Year}`
-    const month = `${Month}`
-    const dateTime = `${DateTime}`
-    console.log(`${year}-${month}-${dateTime}`)
-  }, [Year, Month, DateTime])
   // 태그 선택
   const tagState = useSelector((state) => state.tag.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-  const [Tag, setTag] = useState(tagState.tagName)
+  const [Tag, setTag] = useState(tagState[0].tagName)
   const handleTagChange = (e: any) => {
     setTag(e.target.value)
   }
+
   useEffect(() => {
     dispatch(getTagDB(userState))
   }, [])
+  // 수입, 지출
+  const [income, setIncome] = useState(0)
+  const [expenditure, setExpenditure] = useState(0)
 
+  const handleIncomeChange = (e: any) => {
+    setIncome(e.target.value)
+  }
+  const handleExpenditureChange = (e: any) => {
+    setExpenditure(e.target.value)
+  }
+  // 날짜, 태그, 수입, 지출
+  const account = {
+    income,
+    expenditure,
+    tag: `${Tag}`,
+    year: `${Year}`,
+    month: `${Month}`,
+    day: `${DateTime}`
+  }
+  // Account 추가 이벤트
+  const handleAddAccount = () => {
+    dispatch(addAccountDB(account))
+  }
   return (
     <>
-      <Grid textAlign='center' width='100%' margin='-20px auto 50px auto' height='auto'>
+      <Grid
+        textAlign='center' width='100%'
+        margin='-20px auto 50px auto'
+        height='auto'>
         <Box sx={{ minWidth: 120 }}>
           <FormControl>
             <InputLabel
@@ -81,7 +103,9 @@ const WriteForm = () => {
             </NativeSelect>
           </FormControl>
           <FormControl>
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            <InputLabel
+              variant="standard"
+              htmlFor="uncontrolled-native">
               Month
             </InputLabel>
             <NativeSelect
@@ -93,7 +117,9 @@ const WriteForm = () => {
             </NativeSelect>
           </FormControl>
           <FormControl>
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            <InputLabel
+              variant="standard"
+              htmlFor="uncontrolled-native">
               Day
             </InputLabel>
             <NativeSelect
@@ -110,7 +136,9 @@ const WriteForm = () => {
                 marginTop: '20px',
                 width: '210px'
               }}>
-              <InputLabel variant="standard" htmlFor="uncontrolled-native">
+              <InputLabel
+                variant="standard"
+                htmlFor="uncontrolled-native">
                 태그 선택
               </InputLabel>
               <NativeSelect
@@ -132,7 +160,13 @@ const WriteForm = () => {
             `;
           }}>
           <label style={{ fontWeight: 'bold', color: '#B6C8A5' }}>수입</label>
-          <Input border='2px solid #B6C8A5' width='200px' margin='0 10px' height='40px' />
+          <Input
+            border='2px solid #B6C8A5'
+            width='200px'
+            margin='0 10px'
+            type='number'
+            height='40px'
+            _onChange={handleIncomeChange} />
         </Grid>
 
         <Grid
@@ -140,11 +174,19 @@ const WriteForm = () => {
           margin='40px 0 0 0'
           addstyle={() => {
             return css`
-        justify-content: space-between;
+          justify-content: space-between;
         `;
           }}>
-          <label style={{ fontWeight: 'bold', color: 'red' }}>지출</label>
-          <Input border='2px solid #B6C8A5' width='200px' margin='0 10px' height='40px' />
+          <label
+            style={{ fontWeight: 'bold', color: 'red' }}
+          >지출</label>
+          <Input
+            border='2px solid #B6C8A5'
+            width='200px'
+            margin='0 10px'
+            height='40px'
+            type='number'
+            _onChange={handleExpenditureChange} />
         </Grid>
 
         <Grid textAlign='center'>
@@ -153,7 +195,9 @@ const WriteForm = () => {
             width='80px'
             height='40px'
             margin='40px 0'
-            color='white'>작성하기</Button>
+            color='white'
+            _onClick={() => handleAddAccount()}
+          >작성하기</Button>
         </Grid>
       </WriteFormStyle>
     </>
