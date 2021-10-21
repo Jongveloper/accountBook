@@ -16,16 +16,8 @@ const Account = sequelize.define('account', {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  incomeTag: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
   expenditure: {
     type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  expenditureTag: {
-    type: DataTypes.STRING,
     allowNull: true,
   },
   year: {
@@ -40,6 +32,10 @@ const Account = sequelize.define('account', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  tag: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 Account.belongsTo(User);
 
@@ -47,12 +43,11 @@ const INCLUDE_USER = {
   attributes: [
     'id',
     'income',
-    'incomeTag',
     'expenditure',
-    'expenditureTag',
     'year',
     'month',
     'day',
+    'tag',
     'createdAt',
     'userId',
     [Sequelize.col('user.name'), 'name'],
@@ -92,44 +87,32 @@ export async function getById(id) {
 
 export async function create(
   income,
-  incomeTag,
   expenditure,
-  expenditureTag,
   year,
   month,
   day,
+  tag,
   userId
 ) {
   return Account.create({
     income,
-    incomeTag,
     expenditure,
-    expenditureTag,
     year,
     month,
     day,
+    tag,
     userId,
   }).then((data) => this.getById(data.dataValues.id));
 }
 
-export async function update(
-  id,
-  income,
-  incomeTag,
-  expenditure,
-  expenditureTag,
-  year,
-  month,
-  day
-) {
+export async function update(id, income, expenditure, year, month, day, tag) {
   return Account.findByPk(id, INCLUDE_USER).then((account) => {
     account.income = income;
-    account.incomeTag = incomeTag;
     account.expenditure = expenditure;
-    account.expenditureTag = expenditureTag;
     account.year = year;
     account.month = month;
     account.day = day;
+    account.tag = tag;
     return account.save();
   });
 }
