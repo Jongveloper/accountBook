@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { history } from '../redux/configureStore';
 
-import { SignInType, SignUpType, TagType } from './ApiTypes';
+import { SignInType, SignUpType, TagType, AccountType } from './ApiTypes';
 
 import { getToken, delToken, setToken } from './token';
 import { setUserInfo, delUserInfo } from './userInfo';
@@ -51,6 +51,10 @@ const apis = {
   CreateTag: (tag: TagType) => instance.post('/tag', tag),
   GetTag: (username: string) => instance.get(`/tag?username=${username}`),
   DeleteTag: (id: number) => instance.delete(`/tag/${id}`),
+  GetAccount: (username: string) =>
+    instance.get(`/account?username=${username}`),
+  CreateAccount: (account: AccountType) => instance.post('/account', account),
+  DeleteAccount: (id: number) => instance.delete(`/account/${id}`),
 };
 
 export default apis;
