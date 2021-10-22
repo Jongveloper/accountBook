@@ -6,7 +6,7 @@ interface Prop {
   };
 }
 
-const NavigationStyle = styled.ul<Prop>`
+const NavigationStyle = styled.div<Prop>`
   display: flex;
   position: fixed;
   width: 100%;
@@ -19,11 +19,12 @@ const NavigationStyle = styled.ul<Prop>`
   font-size: ${({ theme }) => theme.fontSize.xs};
   cursor: pointer;
   transform: translate(-50%);
-  z-index: 3;
+  background: #f8f8f8;
+  z-index: 9;
   border-top: 1px solid #c1c1c1;
 `;
 
-const NavigationIcons = styled.li<Prop>`
+const NavigationIcons = styled.div<Prop>`
   display: flex;
   flex-direction: column;
   align-items: center;
