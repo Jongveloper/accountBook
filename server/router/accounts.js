@@ -14,4 +14,12 @@ router.put('/account/:id', isAuth, accountController.updateAccount);
 router.delete('/account/:id', isAuth, accountController.deleteAccount);
 
 router.get('/account/cal', isAuth, accountController.getMonthAccount);
+
+router.get(
+  '/account/total',
+  isAuth,
+  accountController.getTotalExpenditureAccount
+);
+
+router.get('/account/totalin', isAuth, accountController.getTotalIncomeAccount);
 export default router;
