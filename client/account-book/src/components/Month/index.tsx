@@ -3,11 +3,13 @@ import { useLocation } from 'react-router';
 import MonthStyle from './style';
 import { Grid } from '../../elements';
 const Month = () => {
+  const dt = new Date()
   const path: string = useLocation().pathname
+  const today = dt.getFullYear() + '년' + (dt.getMonth() + 1) + '월' + dt.getDate() + '일';
 
   return path.includes('/home') ? (
     <MonthStyle>
-      <h1 style={{ marginTop: '40px' }}>1월</h1>
+      <h1 style={{ marginTop: '40px' }}>{today}</h1>
     </MonthStyle>
   ) :
     <Grid>
