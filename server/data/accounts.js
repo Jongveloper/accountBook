@@ -72,6 +72,18 @@ export async function getAll() {
   return Account.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
 }
 
+export async function getMonth(username, year, month) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    ...ORDER_DESC,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    where: { year, month },
+  });
+}
+
 export async function getAllByUsername(username) {
   return Account.findAll({
     ...INCLUDE_USER,

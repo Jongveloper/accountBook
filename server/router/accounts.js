@@ -12,4 +12,6 @@ router.post('/account', isAuth, accountController.createAccount);
 router.put('/account/:id', isAuth, accountController.updateAccount);
 
 router.delete('/account/:id', isAuth, accountController.deleteAccount);
+
+router.get('/account/cal', isAuth, accountController.getMonthAccount);
 export default router;
