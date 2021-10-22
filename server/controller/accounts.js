@@ -8,6 +8,14 @@ export async function getAccounts(req, res) {
   res.status(200).json(data);
 }
 
+export async function getMonthAccount(req, res) {
+  const username = req.query.username;
+  const year = req.body.year;
+  const month = req.body.month;
+  const data = await accountRepository.getMonth(username, year, month);
+  res.status(200).json(data);
+}
+
 export async function createAccount(req, res, next) {
   const { income, expenditure, year, month, day, tag, contents } = req.body;
   const account = await accountRepository.create(
