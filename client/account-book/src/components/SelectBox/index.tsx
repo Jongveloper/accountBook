@@ -60,7 +60,7 @@ export default function SelectBox() {
           {month.map((i) => <option key={i} value={i}>{i}</option>)}
         </NativeSelect>
       </FormControl>
-      <Button border='none' color='white' width='40px' margin='5px 0' height='40px'
+      <Button border='none' color='white' width='80px' margin='0 7px' height='45px'
         _onClick={() => { getDate() }}>조회</Button>
       <Grid
         isFlex
@@ -69,7 +69,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '15px', fontWeight: 900, color: '#B6C8A5', margin: '-35px 45px' }}>총 수입: 10000</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 15px' }}>{Year}년 {Month}월</p>
       </Grid>
       <Grid
         isFlex
@@ -78,7 +78,16 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '15px', fontWeight: 900, color: 'red', margin: '-15px 45px' }}>총 지출: 10000</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 5px' }}>총 수입: 10000</p>
+      </Grid>
+      <Grid
+        isFlex
+        addstyle={() => {
+          return css`
+          justify-content: flex-end;
+          `
+        }}>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 5px' }}>총 지출: 10000</p>
       </Grid>
     </Box>
   );
