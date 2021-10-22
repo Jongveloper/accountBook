@@ -2,9 +2,7 @@ import * as accountRepository from '../data/accounts.js';
 
 export async function getAccounts(req, res) {
   const username = req.query.username;
-  const data = await (username
-    ? accountRepository.getAll()
-    : accountRepository.getAllByUsername(username));
+  const data = await accountRepository.getAllByUsername(username);
   res.status(200).json(data);
 }
 
@@ -13,6 +11,26 @@ export async function getMonthAccount(req, res) {
   const year = req.body.year;
   const month = req.body.month;
   const data = await accountRepository.getMonth(username, year, month);
+  res.status(200).json(data);
+}
+
+export async function getTotalExpenditureAccount(req, res) {
+  const username = req.query.username;
+  const year = req.body.year;
+  const month = req.body.month;
+  const data = await accountRepository.getTotalExpenditure(
+    username,
+    year,
+    month
+  );
+  res.status(200).json(data);
+}
+
+export async function getTotalIncomeAccount(req, res) {
+  const username = req.query.username;
+  const year = req.body.year;
+  const month = req.body.month;
+  const data = await accountRepository.getTotalIncome(username, year, month);
   res.status(200).json(data);
 }
 

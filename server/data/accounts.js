@@ -72,6 +72,36 @@ export async function getAll() {
   return Account.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
 }
 
+export async function getTotalExpenditure(username, year, month) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    where: { year, month },
+    attributes: [
+      [sequelize.fn('sum', sequelize.col('expenditure')), 'totalExpenditure'],
+    ],
+    group: 'Account.month',
+    order: [sequelize.fn('sum', sequelize.col('expenditure'))],
+  });
+}
+
+export async function getTotalIncome(username, year, month) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    where: { year, month },
+    attributes: [[sequelize.fn('sum', sequelize.col('income')), 'totalIncome']],
+    group: 'Account.month',
+    order: [sequelize.fn('sum', sequelize.col('income'))],
+  });
+}
+
 export async function getMonth(username, year, month) {
   return Account.findAll({
     ...INCLUDE_USER,
