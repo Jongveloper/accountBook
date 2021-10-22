@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from 'react';
+import { css } from 'styled-components'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
-import { Button } from '../../elements/index'
+import { Button, Grid } from '../../elements/index'
 
 
 export default function SelectBox() {
@@ -61,6 +62,24 @@ export default function SelectBox() {
       </FormControl>
       <Button border='none' color='white' width='40px' margin='5px 0' height='40px'
         _onClick={() => { getDate() }}>조회</Button>
+      <Grid
+        isFlex
+        addstyle={() => {
+          return css`
+          justify-content: flex-end;
+          `
+        }}>
+        <p style={{ fontSize: '15px', fontWeight: 900, color: '#B6C8A5', margin: '-35px 45px' }}>총 수입: 10000</p>
+      </Grid>
+      <Grid
+        isFlex
+        addstyle={() => {
+          return css`
+          justify-content: flex-end;
+          `
+        }}>
+        <p style={{ fontSize: '15px', fontWeight: 900, color: 'red', margin: '-15px 45px' }}>총 지출: 10000</p>
+      </Grid>
     </Box>
   );
 }
