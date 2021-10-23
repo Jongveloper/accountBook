@@ -9,7 +9,6 @@ const AccountList = () => {
   const dispatch = useDispatch();
   const accountState = useSelector((state) => state.account.account);
   const userState = useSelector((state) => state.user.user_info.username);
-  console.log(accountState)
   useEffect(() => {
     dispatch(getAccountDB(userState))
   }, [dispatch, userState])
