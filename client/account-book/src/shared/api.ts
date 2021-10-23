@@ -37,7 +37,7 @@ instance.interceptors.response.use(
       !['/signup', '/'].includes(path)
     ) {
       window.alert('토큰이 만료되었어요! 다시 로그인해주세요!');
-      // delToken();
+      delToken();
       delUserInfo('userInfo');
       history.push('/');
     }
@@ -55,6 +55,12 @@ const apis = {
     instance.get(`/account?username=${username}`),
   CreateAccount: (account: AccountType) => instance.post('/account', account),
   DeleteAccount: (id: number) => instance.delete(`/account/${id}`),
+  GetTotalMonthExpenditure: (username: string, month: number, year: number) =>
+    instance.get(`/account/total/?username=${username}`),
+  GetTotalMonthIncome: (username: string, month: number, year: any) =>
+    instance.get(
+      `/account/totalin/?username=${username}&year=${year}&month=${month}`
+    ),
 };
 
 export default apis;
