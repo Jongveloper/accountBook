@@ -1,5 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+//redux
+import {
+  GetTotalMonthExpenditureDB,
+  GetTotalMonthIncomeDB
+}
+  from '../../redux/modules/AccountModule/account';
+import { useDispatch, useSelector } from 'react-redux';
+//style
 import { css } from 'styled-components'
+
+// mui
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
@@ -8,6 +18,8 @@ import { Button, Grid } from '../../elements/index'
 
 
 export default function SelectBox() {
+  const dispatch = useDispatch();
+  // 날짜
   const day = new Date()
   const year = [];
   const startYear = 2000;
@@ -30,11 +42,23 @@ export default function SelectBox() {
   const handleMonthChange = (e: any) => {
     setMonth(e.target.value)
   }
+
+  const userState = useSelector((state) => state.user.user_info.username)
   const getDate = useCallback(() => {
-    const year = `${Year}`
-    const month = `${Month}`
-    console.log(`${year}-${month}`)
-  }, [Year, Month])
+    dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
+  }, [userState, Month, Year])
+
+
+
+  // 총 수입
+  const incomeState = useSelector((state) => state.account.income[0][0].totalIncome)
+  console.log(incomeState)
+
+  // useEffect(() => {
+  //   dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
+  // }, [dispatch, userState, Month, Year])
+
+
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl>
@@ -69,7 +93,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 15px' }}>{Year}년 {Month}월</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 0px' }}>{Year}년 {Month}월</p>
       </Grid>
       <Grid
         isFlex
@@ -78,7 +102,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 5px' }}>총 수입: 10000</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${incomeState}</p>
       </Grid>
       <Grid
         isFlex
@@ -87,7 +111,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 5px' }}>총 지출: 10000</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: 10000</p>
       </Grid>
     </Box>
   );
