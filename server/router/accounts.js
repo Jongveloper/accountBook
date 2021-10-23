@@ -18,8 +18,12 @@ router.get('/account/cal', isAuth, accountController.getMonthAccount);
 router.get(
   '/account/total',
   isAuth,
-  accountController.getTotalExpenditureAccount
+  accountController.getTotalMonthExpenditureAccount
 );
 
-router.get('/account/totalin', isAuth, accountController.getTotalIncomeAccount);
+router.get(
+  '/account/totalin',
+  isAuth,
+  accountController.getTotalMonthIncomeAccount
+);
 export default router;

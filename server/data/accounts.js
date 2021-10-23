@@ -72,7 +72,7 @@ export async function getAll() {
   return Account.findAll({ ...INCLUDE_USER, ...ORDER_DESC });
 }
 
-export async function getTotalExpenditure(username, year, month) {
+export async function getTotalMonthExpenditure(username, year, month) {
   return Account.findAll({
     ...INCLUDE_USER,
     include: {
@@ -88,7 +88,22 @@ export async function getTotalExpenditure(username, year, month) {
   });
 }
 
-export async function getTotalIncome(username, year, month) {
+export async function getTotalExpenditure(username) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    attributes: [
+      [sequelize.fn('sum', sequelize.col('expenditure')), 'totalExpenditure'],
+    ],
+    group: 'Account.expenditure',
+    order: [sequelize.fn('sum', sequelize.col('expenditure'))],
+  });
+}
+
+export async function getTotalMonthIncome(username, year, month) {
   return Account.findAll({
     ...INCLUDE_USER,
     include: {
@@ -98,6 +113,19 @@ export async function getTotalIncome(username, year, month) {
     where: { year, month },
     attributes: [[sequelize.fn('sum', sequelize.col('income')), 'totalIncome']],
     group: 'Account.month',
+    order: [sequelize.fn('sum', sequelize.col('income'))],
+  });
+}
+
+export async function getTotalIncome(username) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    attributes: [[sequelize.fn('sum', sequelize.col('income')), 'totalIncome']],
+    group: 'Account.expenditure',
     order: [sequelize.fn('sum', sequelize.col('income'))],
   });
 }

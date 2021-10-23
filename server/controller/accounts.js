@@ -14,23 +14,23 @@ export async function getMonthAccount(req, res) {
   res.status(200).json(data);
 }
 
-export async function getTotalExpenditureAccount(req, res) {
+export async function getTotalMonthExpenditureAccount(req, res) {
   const username = req.query.username;
   const year = req.body.year;
   const month = req.body.month;
-  const data = await accountRepository.getTotalExpenditure(
-    username,
-    year,
-    month
-  );
+  const data = await (year
+    ? accountRepository.getTotalMonthExpenditure(username, year, month)
+    : accountRepository.getTotalExpenditure(username));
   res.status(200).json(data);
 }
 
-export async function getTotalIncomeAccount(req, res) {
+export async function getTotalMonthIncomeAccount(req, res) {
   const username = req.query.username;
   const year = req.body.year;
   const month = req.body.month;
-  const data = await accountRepository.getTotalIncome(username, year, month);
+  const data = await (year
+    ? accountRepository.getTotalMonthIncome(username, year, month)
+    : accountRepository.getTotalIncome(username));
   res.status(200).json(data);
 }
 
