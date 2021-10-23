@@ -26,8 +26,8 @@ export async function getTotalMonthExpenditureAccount(req, res) {
 
 export async function getTotalMonthIncomeAccount(req, res) {
   const username = req.query.username;
-  const year = req.body.year;
-  const month = req.body.month;
+  const year = req.query.year;
+  const month = req.query.month;
   const data = await (year
     ? accountRepository.getTotalMonthIncome(username, year, month)
     : accountRepository.getTotalIncome(username));
