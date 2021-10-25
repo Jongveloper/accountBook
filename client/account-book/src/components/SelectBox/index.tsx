@@ -127,7 +127,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${totalIncome.totalIncome ? totalIncome.totalIncome : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
       <Grid
         isFlex
@@ -136,7 +136,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: ${totalExpenditure.total ? totalExpenditure.total : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
     </Box>
   );
