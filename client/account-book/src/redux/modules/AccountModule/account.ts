@@ -97,8 +97,9 @@ export const GetTotalMonthExpenditureDB = (
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     apis
       .GetTotalMonthExpenditure(username, month, year)
-      .then((res) => {
-        let expenditure = res.data;
+      .then((res: any) => {
+        let expenditure = res.data.length === 0 ? 0 : res.data[0];
+        console.log(expenditure);
         dispatch(getTotalMonthExpenditure(expenditure));
       })
       .catch((err) => {

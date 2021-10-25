@@ -50,9 +50,6 @@ export default function SelectBox() {
     dispatch(GetTotalMonthExpenditureDB(userState, Month, Year))
   }, [dispatch, userState, Month, Year])
 
-  useEffect(() => {
-    dispatch(GetTotalMonthIncomeDB(userState, day.getMonth() + 1, day.getFullYear()))
-  }, [])
 
 
   // 총 수입
@@ -61,10 +58,19 @@ export default function SelectBox() {
   let totalIncome = incomeState[0]
   console.log(totalIncome)
 
+  useEffect(() => {
+    dispatch(GetTotalMonthIncomeDB(userState, day.getMonth() + 1, day.getFullYear()))
+  }, [])
+
+
   // 총 지출
   const expenditureState = useSelector((state) => state.account.expenditure)
-  console.log(expenditureState)
+  let totalExpenditure = expenditureState[0]
+  console.log(totalExpenditure)
 
+  useEffect(() => {
+    dispatch(GetTotalMonthExpenditureDB(userState, day.getMonth() + 1, day.getFullYear()))
+  }, [])
 
 
 
@@ -126,7 +132,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: 10000</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: ${totalExpenditure.total ? totalExpenditure.total : 0}</p>
       </Grid>
     </Box>
   );
