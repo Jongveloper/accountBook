@@ -80,10 +80,8 @@ export async function getTotalMonthExpenditure(username, year, month) {
       where: { username },
     },
     where: { year, month },
-    attributes: [
-      [sequelize.fn('sum', sequelize.col('expenditure')), 'totalExpenditure'],
-    ],
-    group: 'Account.month',
+    attributes: [[sequelize.fn('sum', sequelize.col('expenditure')), 'total']],
+    group: 'month',
     order: [sequelize.fn('sum', sequelize.col('expenditure'))],
   });
 }
@@ -95,10 +93,8 @@ export async function getTotalExpenditure(username) {
       ...INCLUDE_USER.include,
       where: { username },
     },
-    attributes: [
-      [sequelize.fn('sum', sequelize.col('expenditure')), 'totalExpenditure'],
-    ],
-    group: 'Account.expenditure',
+    attributes: [[sequelize.fn('sum', sequelize.col('expenditure')), 'a']],
+    group: 'expenditure',
     order: [sequelize.fn('sum', sequelize.col('expenditure'))],
   });
 }
