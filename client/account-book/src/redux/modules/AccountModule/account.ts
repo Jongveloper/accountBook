@@ -99,7 +99,6 @@ export const GetTotalMonthExpenditureDB = (
       .GetTotalMonthExpenditure(username, month, year)
       .then((res: any) => {
         let expenditure = res.data.length === 0 ? 0 : res.data[0];
-        console.log(expenditure);
         dispatch(getTotalMonthExpenditure(expenditure));
       })
       .catch((err) => {

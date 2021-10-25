@@ -56,7 +56,7 @@ export default function SelectBox() {
   const incomeState = useSelector((state) => state.account.income)
   // let totalIncome = incomeState.map((item: any) => item)
   let totalIncome = incomeState[0]
-  console.log(totalIncome)
+
 
   useEffect(() => {
     dispatch(GetTotalMonthIncomeDB(userState, day.getMonth() + 1, day.getFullYear()))
@@ -66,7 +66,7 @@ export default function SelectBox() {
   // 총 지출
   const expenditureState = useSelector((state) => state.account.expenditure)
   let totalExpenditure = expenditureState[0]
-  console.log(totalExpenditure)
+
 
   useEffect(() => {
     dispatch(GetTotalMonthExpenditureDB(userState, day.getMonth() + 1, day.getFullYear()))
