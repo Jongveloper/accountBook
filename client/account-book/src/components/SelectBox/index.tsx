@@ -46,17 +46,20 @@ export default function SelectBox() {
   const userState = useSelector((state) => state.user.user_info.username)
   const getDate = useCallback(() => {
     dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
-  }, [userState, Month, Year])
+  }, [dispatch, userState, Month, Year])
 
+  useEffect(() => {
+    dispatch(GetTotalMonthIncomeDB(userState, day.getMonth() + 1, day.getFullYear()))
+  }, [])
 
 
   // 총 수입
-  const incomeState = useSelector((state) => state.account.income[0][0].totalIncome)
-  console.log(incomeState)
+  const incomeState = useSelector((state) => state.account.income)
+  // const totalIncome = incomeState[0] ? incomeState[0][0].totalIncome : '데이터가 없어요'
+  const totalIncome = incomeState[0].length === 0 ? '0' : incomeState[0][0].totalIncome
+  console.log(incomeState[0].length === 0)
 
-  // useEffect(() => {
-  //   dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
-  // }, [dispatch, userState, Month, Year])
+
 
 
   return (
@@ -70,7 +73,7 @@ export default function SelectBox() {
           onChange={(e) => handleYearChange(e)}
           sx={{ marginRight: '5px' }}
         >
-          {year.map((i) => <option key={i} value={i}>{i}</option>)}
+          {year.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
         </NativeSelect>
       </FormControl>
       <FormControl>
@@ -81,10 +84,15 @@ export default function SelectBox() {
           value={Month}
           onChange={(e) => handleMonthChange(e)}
         >
-          {month.map((i) => <option key={i} value={i}>{i}</option>)}
+          {month.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
         </NativeSelect>
       </FormControl>
-      <Button border='none' color='white' width='80px' margin='0 7px' height='45px'
+      <Button
+        border='none'
+        color='white'
+        width='80px'
+        margin='0 7px'
+        height='45px'
         _onClick={() => { getDate() }}>조회</Button>
       <Grid
         isFlex
@@ -93,7 +101,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 0px' }}>{Year}년 {Month}월</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 0px', zIndex: -4 }}>{Year}년 {Month}월</p>
       </Grid>
       <Grid
         isFlex
@@ -102,7 +110,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${incomeState}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${totalIncome}</p>
       </Grid>
       <Grid
         isFlex

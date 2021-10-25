@@ -112,7 +112,7 @@ export async function getTotalMonthIncome(username, year, month) {
     },
     where: { year, month },
     attributes: [[sequelize.fn('sum', sequelize.col('income')), 'totalIncome']],
-    group: 'Account.month',
+    group: 'month',
     order: [sequelize.fn('sum', sequelize.col('income'))],
   });
 }
