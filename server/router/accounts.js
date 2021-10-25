@@ -26,4 +26,6 @@ router.get(
   isAuth,
   accountController.getTotalMonthIncomeAccount
 );
+
+router.get('/account/month', isAuth, accountController.getMonthAccount);
 export default router;
