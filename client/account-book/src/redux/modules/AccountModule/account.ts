@@ -40,6 +40,9 @@ export const accountSlice = createSlice({
       state.income.push(total);
       state.income.shift();
     },
+    getMonthAccount: (state, action) => {
+      state.account = action.payload;
+    },
   },
 });
 
@@ -55,6 +58,21 @@ export const addAccountDB = (account: any) => {
       .catch((err) => {
         console.error(err);
       });
+  };
+};
+
+export const getMonthAccountDB = (
+  username: string,
+  month: number,
+  year: number
+) => {
+  let token = getToken();
+  return function (dispatch: any) {
+    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    apis.GetMonth(username, month, year).then((res) => {
+      let account = res.data;
+      dispatch(getMonthAccount(account));
+    });
   };
 };
 
@@ -133,6 +151,7 @@ export const {
   getAccount,
   getTotalMonthExpenditure,
   getTotalMonthIncome,
+  getMonthAccount,
 } = accountSlice.actions;
 export const selectAccount = (state: RootState) => state.account;
 export default accountSlice.reducer;

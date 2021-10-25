@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 //redux
 import {
+  getMonthAccountDB,
   GetTotalMonthExpenditureDB,
   GetTotalMonthIncomeDB
 }
@@ -48,6 +49,7 @@ export default function SelectBox() {
   const getDate = useCallback(() => {
     dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
     dispatch(GetTotalMonthExpenditureDB(userState, Month, Year))
+    dispatch(getMonthAccountDB(userState, Month, Year))
   }, [dispatch, userState, Month, Year])
 
 
@@ -72,6 +74,8 @@ export default function SelectBox() {
     dispatch(GetTotalMonthExpenditureDB(userState, day.getMonth() + 1, day.getFullYear()))
   }, [])
 
+  const accountState = useSelector((state) => state.account.account)
+  console.log(accountState)
 
 
 

@@ -63,6 +63,10 @@ const apis = {
     instance.get(
       `/account/totalin/?username=${username}&year=${year}&month=${month}`
     ),
+  GetMonth: (username: string, month: number, year: number) =>
+    instance.get(
+      `/account/month/?username=${username}&year=${year}&month=${month}`
+    ),
 };
 
 export default apis;
