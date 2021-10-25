@@ -17,7 +17,7 @@ const AccountList = () => {
       {accountState.map((account: any, idx: number) => {
         return (
           <>
-            <Grid>
+            <Grid key={idx}>
               <AccountDateStyle>
                 <p style={{ color: '#C1C1C1' }}>
                   {`${account.year}년 ${account.month}월 ${account.day}일`}</p>

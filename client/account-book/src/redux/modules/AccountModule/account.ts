@@ -31,10 +31,9 @@ export const accountSlice = createSlice({
       state.account = action.payload;
     },
     getTotalMonthExpenditure: (state, action) => {
-      const total = action.payload.totalExpenditure;
-      const year = action.payload.year;
-      const month = action.payload.month;
-      state.expenditure.push(total, year, month);
+      const total = action.payload;
+      state.expenditure.push(total);
+      state.expenditure.shift();
     },
     getTotalMonthIncome: (state, action) => {
       const total = action.payload;
@@ -118,9 +117,8 @@ export const GetTotalMonthIncomeDB = (
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     apis
       .GetTotalMonthIncome(username, month, year)
-      .then((res) => {
-        let income = res.data;
-        console.log(res);
+      .then((res: any) => {
+        let income = res.data.length === 0 ? 0 : res.data[0];
         dispatch(getTotalMonthIncome(income));
       })
       .catch((err) => {
