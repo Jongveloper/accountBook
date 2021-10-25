@@ -36,6 +36,7 @@ export default function SelectBox() {
   const [Year, setYear] = useState(day.getFullYear());
   const [Month, setMonth] = useState(day.getMonth() + 1);
 
+
   const handleYearChange = (e: any) => {
     setYear(e.target.value)
   }
@@ -46,6 +47,7 @@ export default function SelectBox() {
   const userState = useSelector((state) => state.user.user_info.username)
   const getDate = useCallback(() => {
     dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
+    dispatch(GetTotalMonthExpenditureDB(userState, Month, Year))
   }, [dispatch, userState, Month, Year])
 
   useEffect(() => {
@@ -55,9 +57,14 @@ export default function SelectBox() {
 
   // 총 수입
   const incomeState = useSelector((state) => state.account.income)
-  // const totalIncome = incomeState[0] ? incomeState[0][0].totalIncome : '데이터가 없어요'
-  const totalIncome = incomeState[0].length === 0 ? '0' : incomeState[0][0].totalIncome
-  console.log(incomeState[0].length === 0)
+  // let totalIncome = incomeState.map((item: any) => item)
+  let totalIncome = incomeState[0]
+  console.log(totalIncome)
+
+  // 총 지출
+  const expenditureState = useSelector((state) => state.account.expenditure)
+  console.log(expenditureState)
+
 
 
 
@@ -110,7 +117,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${totalIncome}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ${totalIncome.totalIncome ? totalIncome.totalIncome : 0}</p>
       </Grid>
       <Grid
         isFlex

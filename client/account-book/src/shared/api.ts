@@ -56,7 +56,9 @@ const apis = {
   CreateAccount: (account: AccountType) => instance.post('/account', account),
   DeleteAccount: (id: number) => instance.delete(`/account/${id}`),
   GetTotalMonthExpenditure: (username: string, month: number, year: number) =>
-    instance.get(`/account/total/?username=${username}`),
+    instance.get(
+      `/account/total/?username=${username}&year=${year}&month=${month}`
+    ),
   GetTotalMonthIncome: (username: string, month: number, year: any) =>
     instance.get(
       `/account/totalin/?username=${username}&year=${year}&month=${month}`
