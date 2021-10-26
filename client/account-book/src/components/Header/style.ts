@@ -15,7 +15,7 @@ const HeaderStyle = styled.header<Prop>`
   left: 0;
   background-color: ${({ theme }) => theme.color.olive};
   color: ${({ theme }) => theme.color.white};
-  z-index: 0;
+  z-index: 1;
 `;
 
 export default HeaderStyle;

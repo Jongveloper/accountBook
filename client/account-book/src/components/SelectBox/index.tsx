@@ -56,7 +56,6 @@ export default function SelectBox() {
 
   // 총 수입
   const incomeState = useSelector((state) => state.account.income)
-  // let totalIncome = incomeState.map((item: any) => item)
   let totalIncome = incomeState[0]
 
 
@@ -80,7 +79,7 @@ export default function SelectBox() {
 
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, position: 'fixed', zIndex: 4 }}>
       <FormControl>
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Year
@@ -118,7 +117,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px 0px', zIndex: -4 }}>{Year}년 {Month}월</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px -100px', zIndex: -4 }}>{Year}년 {Month}월</p>
       </Grid>
       <Grid
         isFlex
@@ -127,7 +126,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px 0px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px -100px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
       <Grid
         isFlex
@@ -136,7 +135,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px 0px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px -100px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
     </Box>
   );

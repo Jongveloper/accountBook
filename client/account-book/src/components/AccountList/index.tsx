@@ -21,8 +21,8 @@ const AccountList = () => {
               <AccountDateStyle>
                 <p style={{ color: '#C1C1C1' }}>
                   {`${account.year}년 ${account.month}월 ${account.day}일`}</p>
-                <p style={{ marginRight: '-100px', color: '#B6C8A5' }}>{account.income.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
-                <p style={{ color: 'red' }}>{account.expenditure.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
+                <p style={{ marginRight: '-100px', color: '#B6C8A5' }}>{parseInt(account.income).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
+                <p style={{ color: 'red' }}>-{parseInt(account.expenditure).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
               </AccountDateStyle>
               <AccountContentStyle>
                 <p>{`₩ ${account.contents}`}</p>
