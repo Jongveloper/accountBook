@@ -45,6 +45,8 @@ const GridStyle = styled.div<Prop>`
   border-radius: ${({ radius }) => radius};
   overflow: ${({ overflow }) => overflow};
   cursor: ${({ cursor }) => cursor};
+  background-color: ${({ bgColor }) => bgColor};
+  z-index: ${({ z }) => z};
   ${({ padding }) => borderBox(padding!)};
   ${({ fs, fw, color, lh, textAlign }) =>
     textProps(
