@@ -13,7 +13,7 @@ const MonthStyle = styled.div<Prop>`
   border-radius: 20px;
   color: #b6c8a5;
   margin: auto;
-  font-size: 40px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
   margin-top: 20px;

@@ -67,6 +67,10 @@ const apis = {
     instance.get(
       `/account/month/?username=${username}&year=${year}&month=${month}`
     ),
+  GetMostExTag: (username: string, month: number, year: number) =>
+    instance.get(
+      `/account/most/?username=${username}&year=${year}&month=${month}`
+    ),
 };
 
 export default apis;
