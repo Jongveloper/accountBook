@@ -5,7 +5,7 @@ import { User } from './auth.js';
 const Sequelize = SQ.Sequelize;
 const DataTypes = SQ.DataTypes;
 
-const Account = sequelize.define('account', {
+export const Account = sequelize.define('account', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -83,6 +83,23 @@ export async function getTotalMonthExpenditure(username, year, month) {
     attributes: [[sequelize.fn('sum', sequelize.col('expenditure')), 'total']],
     group: 'month',
     order: [sequelize.fn('sum', sequelize.col('expenditure'))],
+  });
+}
+
+export async function getMostMonthTag(username, year, month) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    where: { year, month },
+    attributes: [
+      'tag',
+      [sequelize.fn('sum', sequelize.col('expenditure')), 'total'],
+    ],
+    group: 'tag',
+    order: [[sequelize.fn('count', sequelize.col('expenditure')), 'DESC']],
   });
 }
 
