@@ -27,5 +27,7 @@ router.get(
   accountController.getTotalMonthIncomeAccount
 );
 
+router.get('/account/most', isAuth, accountController.getMostMonthExTag);
+
 router.get('/account/month', isAuth, accountController.getMonthAccount);
 export default router;

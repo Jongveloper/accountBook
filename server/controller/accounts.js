@@ -24,6 +24,14 @@ export async function getTotalMonthExpenditureAccount(req, res) {
   res.status(200).json(data);
 }
 
+export async function getMostMonthExTag(req, res) {
+  const username = req.query.username;
+  const year = req.query.year;
+  const month = req.query.month;
+  const data = await accountRepository.getMostMonthTag(username, year, month);
+  res.status(200).json(data[0]);
+}
+
 export async function getTotalMonthIncomeAccount(req, res) {
   const username = req.query.username;
   const year = req.query.year;
