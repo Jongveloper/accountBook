@@ -17,6 +17,7 @@ const Container: React.FC<Props> = ({
 
 Container.defaultProps = {
   padding: '0',
+  height: '50vh'
 };
 
 export default Container;
