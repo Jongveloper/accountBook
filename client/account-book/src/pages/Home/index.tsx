@@ -6,7 +6,7 @@ import SelectBox from '../../components/SelectBox'
 import AccountList from '../../components/AccountList';
 const Home = (): React.ReactElement => {
   return (
-    <Container padding='30px'>
+    <Container padding='30px' height='100vh'>
       <Grid
         width='400px'
         margin='0px -43px'
