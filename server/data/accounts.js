@@ -99,7 +99,7 @@ export async function getMostMonthTag(username, year, month) {
       [sequelize.fn('sum', sequelize.col('expenditure')), 'total'],
     ],
     group: 'tag',
-    order: [[sequelize.fn('count', sequelize.col('expenditure')), 'DESC']],
+    order: [[sequelize.fn('sum', sequelize.col('expenditure')), 'DESC']],
   });
 }
 
