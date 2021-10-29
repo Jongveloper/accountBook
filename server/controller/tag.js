@@ -2,9 +2,7 @@ import * as tagRepository from '../data/tag.js';
 
 export async function getTags(req, res) {
   const username = req.query.username;
-  const data = await (username
-    ? tagRepository.getAll()
-    : tagRepository.getAllByUsername(username));
+  const data = await tagRepository.getAllByUsername(username);
   res.status(200).json(data);
 }
 
