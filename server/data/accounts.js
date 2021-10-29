@@ -40,6 +40,10 @@ export const Account = sequelize.define('account', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  color: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 Account.belongsTo(User);
 
@@ -53,6 +57,7 @@ const INCLUDE_USER = {
     'day',
     'tag',
     'contents',
+    'color',
     'createdAt',
     'userId',
     [Sequelize.col('user.name'), 'name'],
@@ -181,6 +186,7 @@ export async function create(
   day,
   tag,
   contents,
+  color,
   userId
 ) {
   return Account.create({
@@ -191,6 +197,7 @@ export async function create(
     day,
     tag,
     contents,
+    color,
     userId,
   }).then((data) => this.getById(data.dataValues.id));
 }

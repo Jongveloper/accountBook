@@ -43,7 +43,8 @@ export async function getTotalMonthIncomeAccount(req, res) {
 }
 
 export async function createAccount(req, res, next) {
-  const { income, expenditure, year, month, day, tag, contents } = req.body;
+  const { income, expenditure, year, month, day, tag, contents, color } =
+    req.body;
   const account = await accountRepository.create(
     income,
     expenditure,
@@ -52,6 +53,7 @@ export async function createAccount(req, res, next) {
     day,
     tag,
     contents,
+    color,
     req.userId
   );
   res.status(201).json(account);

@@ -22,6 +22,7 @@ export const accountSlice = createSlice({
         month: action.payload.month,
         day: action.payload.day,
         tag: action.payload.tag,
+        color: action.payload.color,
       };
       state.account.push(account);
     },
