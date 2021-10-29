@@ -50,7 +50,7 @@ const WriteForm = () => {
   const tagState = useSelector((state) => state.tag.tag)
   const userState = useSelector((state) => state.user.user_info.username)
   const randomColor = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600']
-  const [Tag, setTag] = useState(tagState[0].tagName)
+  const [Tag, setTag] = useState(tagState[0] ? tagState[0].tagName : '')
   const handleTagChange = (e: any) => {
     setTag(e.target.value)
   }
