@@ -41,6 +41,13 @@ export async function getTotalMonthIncomeAccount(req, res) {
     : accountRepository.getTotalIncome(username));
   res.status(200).json(data);
 }
+export async function getStatisticsDataAccount(req, res) {
+  const username = req.query.username;
+  const year = req.query.year;
+  const month = req.query.month;
+  const data = await accountRepository.getStatisticsData(username, year, month);
+  res.status(200).json(data);
+}
 
 export async function createAccount(req, res, next) {
   const { income, expenditure, year, month, day, tag, contents, color } =
