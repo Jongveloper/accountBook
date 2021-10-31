@@ -160,6 +160,24 @@ export async function getMonth(username, year, month) {
   });
 }
 
+export async function getStatisticsData(username, year, month) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    where: { year, month },
+    attributes: [
+      'contents',
+      'expenditure',
+      'color',
+      [sequelize.fn('count', sequelize.col('contents')), 'count'],
+    ],
+    group: ['contents', 'expenditure', 'color'],
+  });
+}
+
 export async function getAllByUsername(username) {
   return Account.findAll({
     ...INCLUDE_USER,
