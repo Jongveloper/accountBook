@@ -71,6 +71,10 @@ const apis = {
     instance.get(
       `/account/most/?username=${username}&year=${year}&month=${month}`
     ),
+  GetStatistics: (username: string, month: number, year: number) =>
+    instance.get(
+      `/account/statistics/?username=${username}&year=${year}&month=${month}`
+    ),
 };
 
 export default apis;
