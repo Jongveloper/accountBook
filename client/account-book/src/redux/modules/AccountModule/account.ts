@@ -8,6 +8,7 @@ const initialState = {
   expenditure: [{}],
   income: [{}],
   tag: [{}],
+  statistics: [{}],
 };
 
 export const accountSlice = createSlice({
@@ -47,6 +48,9 @@ export const accountSlice = createSlice({
     },
     getMonthExTag: (state, action) => {
       state.tag = action.payload;
+    },
+    getStatistics: (state, action) => {
+      state.statistics = action.payload;
     },
   },
 });
@@ -165,6 +169,21 @@ export const getMonthExTagDB = (
   };
 };
 
+export const getStatisticsDB = (
+  username: string,
+  month: number,
+  year: number
+) => {
+  let token = getToken();
+  return function (dispatch: any) {
+    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    apis.GetStatistics(username, month, year).then((res: any) => {
+      console.log(res.data);
+      dispatch(getStatistics(res.data));
+    });
+  };
+};
+
 export const {
   addAccount,
   deleteAccount,
@@ -173,6 +192,7 @@ export const {
   getTotalMonthIncome,
   getMonthAccount,
   getMonthExTag,
+  getStatistics,
 } = accountSlice.actions;
 export const selectAccount = (state: RootState) => state.account;
 export default accountSlice.reducer;
