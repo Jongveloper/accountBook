@@ -106,9 +106,9 @@ export default function SelectBox() {
       <Button
         border='none'
         color='white'
-        width='80px'
+        width='60px'
         margin='0 7px'
-        height='45px'
+        height='50px'
         _onClick={() => { getDate() }}>조회</Button>
       <Grid
         isFlex
@@ -117,7 +117,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px -100px', zIndex: -4 }}>{Year}년 {Month}월</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px -140px', zIndex: -4 }}>{Year}년 {Month}월</p>
       </Grid>
       <Grid
         isFlex
@@ -126,7 +126,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px -100px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px -140px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
       <Grid
         isFlex
@@ -135,7 +135,7 @@ export default function SelectBox() {
           justify-content: flex-end;
           `
         }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px -100px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px -140px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
       </Grid>
     </Box>
   );
