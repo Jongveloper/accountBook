@@ -18,20 +18,19 @@ const TagList = () => {
   useEffect(() => {
     dispatch(getTagDB(userState))
   }, [dispatch, userState])
-
-
   return (
     <TagListStyle>
       {tagState.map((tag: any, idx: number) => {
         return (
-          <>
+          <div key={idx + Math.random()}>
             <Grid
               isFlex
               addstyle={() => {
                 return css`
                 justify-content: space-between;
               `;
-              }}>
+              }}
+            >
               <li
                 style={{
                   fontWeight: 900,
@@ -49,7 +48,7 @@ const TagList = () => {
                 _onClick={() => { handleDelete(tag.id) }}
               >x</Button>
             </Grid>
-          </>)
+          </div>)
       })}
     </TagListStyle>
   )
