@@ -38,8 +38,9 @@ const Chart = () => {
           labelStyle={{
             fontSize: '5.5px',
             fill: 'white',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}
+          paddingAngle={0.1}
           labelPosition={80}
         />
       </Grid>
