@@ -16,8 +16,8 @@ const AccountList = () => {
     <>
       {accountState.map((account: any, idx: number) => {
         return (
-          <>
-            <Grid key={idx}>
+          <div key={idx + Math.random()}>
+            <Grid>
               <AccountDateStyle>
                 <p style={{ color: '#C1C1C1' }}>
                   {`${account.year}년 ${account.month}월 ${account.day}일`}</p>
@@ -32,7 +32,7 @@ const AccountList = () => {
                 <p>{account.tag}</p>
               </AccountTagStyle>
             </Grid>
-          </>
+          </div>
         )
       })}
 

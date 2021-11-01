@@ -20,6 +20,7 @@ export interface Props {
   placeholder?: string;
   _onChange?: any;
   _onKeyPress?: any;
+  _onFocus?: any;
 }
 
 const Input: React.FC<Props> = ({
@@ -30,6 +31,7 @@ const Input: React.FC<Props> = ({
   placeholder,
   _onChange,
   _onKeyPress,
+  _onFocus,
   ...props
 }): React.ReactElement => {
   return (
@@ -41,6 +43,7 @@ const Input: React.FC<Props> = ({
       accept={accept}
       onChange={_onChange}
       onKeyPress={_onKeyPress}
+      onFocus={_onFocus}
       {...props} />
   )
 }
@@ -48,6 +51,7 @@ const Input: React.FC<Props> = ({
 Input.defaultProps = {
   _onChange: () => { },
   _onKeyPress: () => { },
+  _onFocus: () => { },
   type: 'text',
   placeholder: '',
   width: '100%',

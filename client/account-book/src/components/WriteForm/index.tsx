@@ -74,8 +74,8 @@ const WriteForm = () => {
   }
   // 날짜, 태그, 수입, 지출
   const account = {
-    income: parseInt(income),
-    expenditure: parseInt(expenditure),
+    income: income === null ? 0 : parseInt(income),
+    expenditure: expenditure === null ? 0 : parseInt(expenditure),
     tag: `${Tag}`,
     year: parseInt(`${Year}`),
     month: parseInt(`${Month}`),
@@ -85,7 +85,12 @@ const WriteForm = () => {
   }
   // Account 추가 이벤트
   const handleAddAccount = () => {
+    if (account.contents === '') {
+      alert('내용을 입력해주세요!')
+      return
+    }
     dispatch(addAccountDB(account))
+    alert('작성이 완료되었습니다!')
   }
   return (
     <>
@@ -173,7 +178,7 @@ const WriteForm = () => {
             margin='0 10px'
             type='number'
             height='40px'
-            value={income}
+            placeholder='0'
             _onChange={handleIncomeChange} />
         </Grid>
 
@@ -194,7 +199,7 @@ const WriteForm = () => {
             margin='0 10px'
             height='40px'
             type='number'
-            value={expenditure}
+            placeholder='0'
             _onChange={handleExpenditureChange} />
         </Grid>
 
