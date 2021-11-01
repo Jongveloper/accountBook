@@ -13,8 +13,12 @@ const Chart = () => {
     dispatch(getStatisticsDB(userState, 10, 2021))
   }, [])
   const data = statisticState.map((item: any) => [
-    { contents: item.contents, value: item.count, color: item.color, expenditure: item.expenditure },
+    item.expenditure === 0 ?
+      { contents: '', value: 0, color: '', expenditure: '' }
+      :
+      { contents: item.contents, value: Math.floor(item.avg), color: item.color, expenditure: item.expenditure },
   ])
+  console.log(data.flat())
   return (
     <>
       <Grid textAlign='center'>
@@ -22,40 +26,46 @@ const Chart = () => {
           textAlign='left'
         >
           <h2 style={{ fontWeight: 'bold', fontSize: '25px', minHeight: '40px' }}>이번달 통계</h2>
-          <p style={{ fontSize: '12px', color: 'gray' }}>동일한 태그는 동일한 색을 나타내요!</p>
         </Grid>
         <PieChart
-          style={{ width: '200px', marginTop: '35px' }}
+          style={{ width: '320px' }}
           data={data.flat()}
           lineWidth={70}
-          background='#f3f3f3'
+          background='white'
           lengthAngle={360}
           animate
           label={({ dataEntry }) => dataEntry.contents}
           labelStyle={{
-            fontSize: '6px',
+            fontSize: '5.5px',
             fill: 'white',
             fontWeight: 'bold'
           }}
+          labelPosition={80}
         />
       </Grid>
       <Grid margin='35px 0 0 0' border='1px solid #B6C8A5'>
         {statisticState.map((item: any, idx: number) => {
           return (
-            <Grid
-              isFlex
-              key={idx}
-              addstyle={() => {
-                return css`
+            item.expenditure === 0 ? null :
+              <Grid
+                isFlex
+                key={idx}
+                addstyle={() => {
+                  return css`
               justify-content: space-between;
             `;
-              }}>
-              <p style={{ fontWeight: 'bold', color: item.color, minHeight: '30px', marginRight: '160px' }}>{item.contents}</p>
-              <p style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
-                {
-                  Number(item.expenditure).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원
-              </p>
-            </Grid>
+                }}>
+
+                <p style={{ fontWeight: 'bold', color: item.color, minHeight: '30px', marginRight: '100px' }}>
+                  {item.contents}</p>
+
+                <p style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
+                  {
+                    Number(item.expenditure).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  } 원
+                </p>
+
+              </Grid>
           )
         })}
       </Grid>

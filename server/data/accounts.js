@@ -172,7 +172,7 @@ export async function getStatisticsData(username, year, month) {
       'contents',
       'expenditure',
       'color',
-      [sequelize.fn('count', sequelize.col('contents')), 'count'],
+      [sequelize.fn('avg', sequelize.col('expenditure')), 'avg'],
     ],
     group: ['contents', 'expenditure', 'color'],
   });
