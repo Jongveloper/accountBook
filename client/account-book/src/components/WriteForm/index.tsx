@@ -98,7 +98,7 @@ const WriteForm = () => {
         textAlign='center' width='100%'
         margin='-20px auto 50px auto'
         height='auto'>
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, zIndex: 4 }}>
           <FormControl>
             <InputLabel
               variant="standard"
@@ -109,7 +109,7 @@ const WriteForm = () => {
             <NativeSelect
               value={Year}
               onChange={(e) => handleYearChange(e)}
-              sx={{ marginRight: '20px', marginLeft: '20px' }}
+              sx={{ marginRight: '20px', marginLeft: '20px', zIndex: 4 }}
             >
               {year.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -123,7 +123,7 @@ const WriteForm = () => {
             <NativeSelect
               value={Month}
               onChange={(e) => handleMonthChange(e)}
-              sx={{ marginRight: '20px' }}
+              sx={{ marginRight: '20px', zIndex: 4 }}
             >
               {month.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -137,7 +137,7 @@ const WriteForm = () => {
             <NativeSelect
               value={DateTime}
               onChange={(e) => handleDateTimeChange(e)}
-              sx={{ marginRight: '20px' }}
+              sx={{ marginRight: '20px', zIndex: 4 }}
             >
               {dateTime.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -155,6 +155,7 @@ const WriteForm = () => {
               </InputLabel>
               <NativeSelect
                 value={Tag}
+                sx={{ zIndex: 4 }}
                 onChange={(e) => handleTagChange(e)}
               >
                 {tagState.map((tag: any) => <option key={tag.id} value={tag.tagName}>{tag.tagName}</option>)}

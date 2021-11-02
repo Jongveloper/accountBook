@@ -32,6 +32,7 @@ const TagForm = () => {
         addstyle={() => {
           return css`
           max-width: 300px;
+          z-index: 4;
           `
         }}
         _onChange={$tag} />

@@ -73,11 +73,6 @@ export default function SelectBox() {
     dispatch(GetTotalMonthExpenditureDB(userState, day.getMonth() + 1, day.getFullYear()))
   }, [])
 
-  const accountState = useSelector((state) => state.account.account)
-  console.log(accountState)
-
-
-
   return (
     <Box sx={{ minWidth: 120, position: 'fixed', zIndex: 4 }}>
       <FormControl>
