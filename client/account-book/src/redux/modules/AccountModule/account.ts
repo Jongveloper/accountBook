@@ -178,7 +178,6 @@ export const getStatisticsDB = (
   return function (dispatch: any) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     apis.GetStatistics(username, month, year).then((res: any) => {
-      console.log(res.data);
       dispatch(getStatistics(res.data));
     });
   };

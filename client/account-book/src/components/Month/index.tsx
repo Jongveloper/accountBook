@@ -14,7 +14,7 @@ const Month = () => {
 
   const tagState = useSelector((state) => state.account.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-  console.log(tagState)
+
 
   useEffect(() => {
     dispatch(getMonthExTagDB(userState, dt.getMonth() + 1, dt.getFullYear()))

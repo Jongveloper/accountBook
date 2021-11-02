@@ -16,9 +16,9 @@ const Chart = () => {
     item.expenditure === 0 ?
       { contents: '', value: 0, color: '', expenditure: '' }
       :
-      { contents: item.contents, value: Math.floor(item.avg), color: item.color, expenditure: item.expenditure },
+      { contents: item.contents, value: Math.floor(Number(item.avg)), color: item.color, expenditure: item.expenditure },
   ])
-  console.log(data.flat())
+
   return (
     <>
       <Grid textAlign='center'>
