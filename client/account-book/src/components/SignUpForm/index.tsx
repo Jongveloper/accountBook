@@ -53,7 +53,7 @@ const SignUpForm = () => {
           placeholder='사용하실 아이디를 입력해주세요.'
         />
         {formik.errors.username && formik.touched.username && (
-          <p>{formik.errors.username}</p>
+          <p style={{ marginTop: '20px', color: 'red', fontWeight: 700 }}>{formik.errors.username}</p>
         )}
       </Grid>
       <Grid
@@ -72,7 +72,7 @@ const SignUpForm = () => {
           placeholder='사용하실 닉네임을 입력해주세요.'
         />
         {formik.errors.name && formik.touched.name && (
-          <p>{formik.errors.name}</p>
+          <p style={{ marginTop: '20px', color: 'red', fontWeight: 700 }}>{formik.errors.name}</p>
         )}
       </Grid>
       <Grid
@@ -91,19 +91,8 @@ const SignUpForm = () => {
           placeholder='비밀번호를 입력해주세요.'
         />
         {formik.errors.password && formik.touched.password && (
-          <p>{formik.errors.password}</p>
+          <p style={{ marginTop: '20px', color: 'red', fontWeight: 700 }}>{formik.errors.password}</p>
         )}
-      </Grid>
-      <Grid
-        textAlign='center'
-        margin='40px 0 0 0'
-      >
-        <Input
-          border='2px solid #B6C8A5'
-          width='240px'
-          margin='0 15px'
-          height='40px'
-          placeholder='비밀번호를 한번 더 입력해주세요.' />
       </Grid>
       <Grid margin='40px 0 0 0'>
         <Button type='submit' border='none' width='120px' height='50px' color='white'>등록</Button>
