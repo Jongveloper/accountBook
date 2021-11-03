@@ -9,6 +9,7 @@ const initialState = {
   income: [{}],
   tag: [{}],
   statistics: [{}],
+  calendar: [{}],
 };
 
 export const accountSlice = createSlice({
@@ -51,6 +52,9 @@ export const accountSlice = createSlice({
     },
     getStatistics: (state, action) => {
       state.statistics = action.payload;
+    },
+    getCalendar: (state, action) => {
+      state.calendar = action.payload;
     },
   },
 });
@@ -182,6 +186,15 @@ export const getStatisticsDB = (
     });
   };
 };
+export const getCalendarDB = (username: string) => {
+  let token = getToken();
+  return function (dispatch: any) {
+    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    apis.GetCalendar(username).then((res: any) => {
+      dispatch(getCalendar(res.data));
+    });
+  };
+};
 
 export const {
   addAccount,
@@ -192,6 +205,7 @@ export const {
   getMonthAccount,
   getMonthExTag,
   getStatistics,
+  getCalendar,
 } = accountSlice.actions;
 export const selectAccount = (state: RootState) => state.account;
 export default accountSlice.reducer;

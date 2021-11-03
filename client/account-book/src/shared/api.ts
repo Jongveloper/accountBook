@@ -75,6 +75,8 @@ const apis = {
     instance.get(
       `/account/statistics/?username=${username}&year=${year}&month=${month}`
     ),
+  GetCalendar: (username: string) =>
+    instance.get(`/account/calendar/?username=${username}`),
 };
 
 export default apis;
