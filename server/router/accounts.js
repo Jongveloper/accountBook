@@ -22,5 +22,10 @@ router.get(
 );
 router.get('/account/most', isAuth, accountController.getMostMonthExTag);
 router.get('/account/month', isAuth, accountController.getMonthAccount);
-router.get('/account/statistics', accountController.getStatisticsDataAccount);
+router.get(
+  '/account/statistics',
+  isAuth,
+  accountController.getStatisticsDataAccount
+);
+router.get('/account/calendar', accountController.getCalendarDataAccount);
 export default router;

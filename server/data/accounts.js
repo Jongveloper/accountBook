@@ -108,6 +108,17 @@ export async function getMostMonthTag(username, year, month) {
   });
 }
 
+export async function getCalendarData(username) {
+  return Account.findAll({
+    ...INCLUDE_USER,
+    include: {
+      ...INCLUDE_USER.include,
+      where: { username },
+    },
+    attributes: ['year', 'month', 'day', 'tag'],
+  });
+}
+
 export async function getTotalExpenditure(username) {
   return Account.findAll({
     ...INCLUDE_USER,

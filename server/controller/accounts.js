@@ -48,7 +48,11 @@ export async function getStatisticsDataAccount(req, res) {
   const data = await accountRepository.getStatisticsData(username, year, month);
   res.status(200).json(data);
 }
-
+export async function getCalendarDataAccount(req, res) {
+  const username = req.query.username;
+  const data = await accountRepository.getCalendarData(username);
+  res.status(200).json(data);
+}
 export async function createAccount(req, res, next) {
   const { income, expenditure, year, month, day, tag, contents, color } =
     req.body;
