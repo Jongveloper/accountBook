@@ -14,7 +14,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 import { getTagDB } from '../../redux/modules/TagModule/tag';
 import { addAccountDB } from '../../redux/modules/AccountModule/account';
 
-const WriteForm = () => {
+const WriteForm = (): React.ReactElement => {
   const dispatch = useDispatch();
   // 날짜 입력
   const day = new Date()
@@ -57,7 +57,7 @@ const WriteForm = () => {
 
   useEffect(() => {
     dispatch(getTagDB(userState))
-  }, [])
+  }, [dispatch, userState])
   // 수입, 지출, 내용
   const [income, setIncome] = useState('0')
   const [expenditure, setExpenditure] = useState('0')
@@ -121,7 +121,7 @@ const WriteForm = () => {
               Month
             </InputLabel>
             <NativeSelect
-              value={Month}
+              value={Month.toString().padStart(2, '0')}
               onChange={(e) => handleMonthChange(e)}
               sx={{ marginRight: '20px', zIndex: 4 }}
             >
@@ -135,7 +135,7 @@ const WriteForm = () => {
               Day
             </InputLabel>
             <NativeSelect
-              value={DateTime}
+              value={DateTime.toString().padStart(2, '0')}
               onChange={(e) => handleDateTimeChange(e)}
               sx={{ marginRight: '20px', zIndex: 4 }}
             >

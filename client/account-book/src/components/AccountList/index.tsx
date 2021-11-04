@@ -5,7 +5,7 @@ import { AccountDateStyle, AccountContentStyle, AccountTagStyle } from './style'
 import { getAccountDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
 
-const AccountList = () => {
+const AccountList = (): React.ReactElement => {
   const dispatch = useDispatch();
   const accountState = useSelector((state) => state.account.account);
   const userState = useSelector((state) => state.user.user_info.username);

@@ -6,7 +6,6 @@ import { setToken, delToken } from '../../../shared/token';
 import { setUserInfo } from '../../../shared/userInfo';
 import { history } from '../../configureStore';
 import { SignInType } from '../../../shared/ApiTypes';
-import { useHistory } from 'react-router-dom';
 const initialState = {
   user_info: { username: '' },
   is_login: false,
@@ -56,7 +55,7 @@ export const SignInDB = (userInfo: SignInType) => {
         history.push('/home');
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
 };

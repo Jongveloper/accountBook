@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from 'styled-components'
 import { Container, Grid } from '../../elements';
 import WriteForm from '../../components/WriteForm'
 // image

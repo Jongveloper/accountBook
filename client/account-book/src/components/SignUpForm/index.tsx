@@ -10,7 +10,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { signUpDB } from '../../redux/modules/UserModule/user';
 
-const SignUpForm = () => {
+const SignUpForm = (): React.ReactElement => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
