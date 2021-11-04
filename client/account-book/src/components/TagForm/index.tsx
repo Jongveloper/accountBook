@@ -4,7 +4,7 @@ import { TagFormStyle } from './style';
 import { css } from 'styled-components';
 import { addTagDB } from '../../redux/modules/TagModule/tag';
 import { useDispatch } from 'react-redux';
-const TagForm = () => {
+const TagForm = (): React.ReactElement => {
   const dispatch = useDispatch();
   const randomColor = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600']
   let [tag, setTag] = useState({

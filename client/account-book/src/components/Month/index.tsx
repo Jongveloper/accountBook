@@ -6,9 +6,11 @@ import { Grid } from '../../elements';
 //redux
 import { getMonthExTagDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
-const Month = () => {
+const Month = (): React.ReactElement => {
   const dispatch = useDispatch();
   const dt = new Date()
+  const month = dt.getMonth() + 1
+  const year = dt.getFullYear()
   const path: string = useLocation().pathname
   const today = dt.getFullYear() + '년' + (dt.getMonth() + 1) + '월' + dt.getDate() + '일';
 
@@ -17,8 +19,8 @@ const Month = () => {
 
 
   useEffect(() => {
-    dispatch(getMonthExTagDB(userState, dt.getMonth() + 1, dt.getFullYear()))
-  }, [])
+    dispatch(getMonthExTagDB(userState, month, year))
+  }, [dispatch, userState, month, year])
 
   return path.includes('/home') ? (
     <MonthStyle>

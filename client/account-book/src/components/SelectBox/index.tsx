@@ -22,6 +22,8 @@ export default function SelectBox() {
   const dispatch = useDispatch();
   // 날짜
   const day = new Date()
+  const sendMonth = day.getMonth() + 1
+  const sendYear = day.getFullYear()
   const year = [];
   const startYear = 2000;
   const endYear = day.getFullYear();
@@ -60,8 +62,8 @@ export default function SelectBox() {
 
 
   useEffect(() => {
-    dispatch(GetTotalMonthIncomeDB(userState, day.getMonth() + 1, day.getFullYear()))
-  }, [])
+    dispatch(GetTotalMonthIncomeDB(userState, sendMonth, sendYear))
+  }, [dispatch, userState, sendMonth, sendYear])
 
 
   // 총 지출
@@ -70,8 +72,8 @@ export default function SelectBox() {
 
 
   useEffect(() => {
-    dispatch(GetTotalMonthExpenditureDB(userState, day.getMonth() + 1, day.getFullYear()))
-  }, [])
+    dispatch(GetTotalMonthExpenditureDB(userState, sendMonth, sendYear))
+  }, [dispatch, userState, sendMonth, sendYear])
 
   return (
     <Box sx={{ minWidth: 120, position: 'fixed', zIndex: 4 }}>

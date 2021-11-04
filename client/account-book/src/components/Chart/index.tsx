@@ -5,19 +5,23 @@ import { css } from 'styled-components'
 import { getStatisticsDB } from '../../redux/modules/AccountModule/account';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-const Chart = () => {
+const Chart = (): React.ReactElement => {
   const dispatch = useDispatch();
   const statisticState = useSelector((state) => state.account.statistics)
   const userState = useSelector((state) => state.user.user_info.username)
+  const date = new Date();
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
   useEffect(() => {
-    dispatch(getStatisticsDB(userState, 10, 2021))
-  }, [])
+    dispatch(getStatisticsDB(userState, month, year))
+  }, [dispatch, userState, month, year])
   const data = statisticState.map((item: any) => [
     item.expenditure === 0 ?
       { contents: '', value: 0, color: '', expenditure: '' }
       :
-      { contents: item.contents, value: Math.floor(Number(item.avg)), color: item.color, expenditure: item.expenditure },
+      { contents: item.contents, value: Math.floor(Number(item.avg)), color: item.color, expenditure: Number(item.expenditure) },
   ])
+
 
   return (
     <>
@@ -40,7 +44,6 @@ const Chart = () => {
             fill: 'white',
             fontWeight: 'bold',
           }}
-          paddingAngle={0.1}
           labelPosition={80}
         />
       </Grid>

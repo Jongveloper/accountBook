@@ -7,7 +7,7 @@ import { getTagDB, deleteTagDB } from '../../redux/modules/TagModule/tag';
 import { Button, Grid } from '../../elements';
 
 import { css } from 'styled-components'
-const TagList = () => {
+const TagList = (): React.ReactElement => {
   const dispatch = useDispatch();
   const tagState = useSelector((state) => state.tag.tag)
   const userState = useSelector((state) => state.user.user_info.username)
