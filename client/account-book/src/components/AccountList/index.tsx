@@ -2,16 +2,19 @@ import React, { useEffect } from 'react';
 import { Grid } from '../../elements';
 import { AccountDateStyle, AccountContentStyle, AccountTagStyle } from './style';
 // redux
-import { getAccountDB } from '../../redux/modules/AccountModule/account';
+import { getMonthAccountDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
 
 const AccountList = (): React.ReactElement => {
   const dispatch = useDispatch();
   const accountState = useSelector((state) => state.account.account);
   const userState = useSelector((state) => state.user.user_info.username);
+  const date = new Date()
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear()
   useEffect(() => {
-    dispatch(getAccountDB(userState))
-  }, [dispatch, userState])
+    dispatch(getMonthAccountDB(userState, month, year))
+  }, [dispatch, userState, month, year])
   return (
     <>
       {accountState.map((account: any, idx: number) => {
