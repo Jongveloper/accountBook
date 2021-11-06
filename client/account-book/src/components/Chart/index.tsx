@@ -17,9 +17,9 @@ const Chart = (): React.ReactElement => {
   }, [dispatch, userState, month, year])
   const data = statisticState.map((item: any) => [
     item.expenditure === 0 ?
-      { contents: '', value: 0, color: '', expenditure: '' }
+      { contents: '', value: 0, color: '' }
       :
-      { contents: item.contents, value: Math.floor(Number(item.avg)), color: item.color, expenditure: Number(item.expenditure) },
+      { contents: item.contents, value: Math.floor(Number(item.avg)), color: item.color },
   ])
 
 
