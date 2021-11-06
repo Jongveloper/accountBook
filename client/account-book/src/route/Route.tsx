@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
-
+import PrivateRoute from './PrivateRoute';
 import { pathURI } from './Path';
 
 //pages
@@ -20,11 +20,11 @@ const Route = () => {
       <Section>
         <Switch>
           <PublicRoute path={pathURI.signIn} component={SignIn} exact />
-          <PublicRoute path={pathURI.home} component={Home} exact />
-          <PublicRoute path={pathURI.calendar} component={Calendar} exact />
-          <PublicRoute path={pathURI.write} component={WriteAccount} exact />
-          <PublicRoute path={pathURI.chart} component={Statistics} exact />
-          <PublicRoute path={pathURI.info} component={Info} exact />
+          <PrivateRoute path={pathURI.home} component={Home} exact />
+          <PrivateRoute path={pathURI.calendar} component={Calendar} exact />
+          <PrivateRoute path={pathURI.write} component={WriteAccount} exact />
+          <PrivateRoute path={pathURI.chart} component={Statistics} exact />
+          <PrivateRoute path={pathURI.info} component={Info} exact />
           <PublicRoute path={pathURI.signUp} component={SignUp} exact />
         </Switch>
       </Section>
