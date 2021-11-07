@@ -9,7 +9,21 @@ const color = {
 };
 
 const deviceSize = {
-  mobile: '(max-width: 395px)',
+  mobileXs: '281px',
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '568px',
+  tablet: '768px',
+  desktop: '1024px',
+};
+
+const device = {
+  mobileXs: `only screen and (max-width: ${deviceSize.mobileXs})`,
+  mobileS: `only screen and (max-width: ${deviceSize.mobileS}) and (min-width: ${deviceSize.mobileXs})`,
+  mobileM: `only screen and (max-width: ${deviceSize.mobileM}) and (min-width: ${deviceSize.mobileS})`,
+  mobileL: `only screen and (max-width: ${deviceSize.mobileL}) and (min-width: ${deviceSize.mobileM})`,
+  tablet: `only screen and (max-width: ${deviceSize.tablet}) and (min-width: ${deviceSize.mobileL})`,
+  desktop: `only screen and (min-width: ${deviceSize.desktop})`,
 };
 
 const calRem = (size: number): string => `${size / 16}rem`;
@@ -33,5 +47,6 @@ const theme = {
   deviceSize,
   fontSize,
   fontWeight,
+  device,
 };
 export default theme;
