@@ -1,26 +1,23 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { TagListStyle } from './style';
-
 //redux
-import { getTagDB, deleteTagDB } from '../../redux/modules/TagModule/tag';
+import { deleteTagDB } from '../../redux/modules/TagModule/tag';
 import { Button, Grid } from '../../elements';
-
 import { css } from 'styled-components'
-const TagList = (): React.ReactElement => {
-  const dispatch = useDispatch();
-  const tagState = useSelector((state) => state.tag.tag)
-  const userState = useSelector((state) => state.user.user_info.username)
 
+interface Props {
+  tagData: any
+}
+
+const TagList = (tag: Props): React.ReactElement => {
+  const dispatch = useDispatch();
   const handleDelete = (id: number) => {
     dispatch(deleteTagDB(id))
   }
-  useEffect(() => {
-    dispatch(getTagDB(userState))
-  }, [dispatch, userState])
   return (
     <TagListStyle>
-      {tagState.map((tag: any, idx: number) => {
+      {tag.tagData.map((tag: any, idx: number) => {
         return (
           <div key={idx + Math.random()}>
             <Grid
@@ -34,7 +31,6 @@ const TagList = (): React.ReactElement => {
               <li
                 style={{
                   fontWeight: 900,
-                  color: tag.color,
                   lineHeight: 2.5
                 }}
                 key={tag.id + idx}>{tag.tagName}</li>
