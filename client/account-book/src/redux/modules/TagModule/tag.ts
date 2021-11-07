@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import apis, { instance } from '../../../shared/api';
 import { getToken } from '../../../shared/token';
 import type { RootState } from '../../configureStore';
 
 const initialState = {
-  tag: ['', ''],
+  tag: [{ tagName: '', color: '', id: 0 }],
 };
 
 export const tagSlice = createSlice({
@@ -12,12 +12,16 @@ export const tagSlice = createSlice({
   initialState,
   reducers: {
     addTag: (state, action) => {
-      const tag = action.payload.tag;
+      const tagName = action.payload.tagName;
       const color = action.payload.color;
-      state.tag.push(tag, color);
+      const id = action.payload.id;
+      state.tag.push({ tagName, color, id });
     },
-    deleteTag: (state, action: PayloadAction<number>) => {
-      console.log('삭제');
+    deleteTag: (state, action) => {
+      let idx = state.tag.findIndex((r) => r.id === action.payload);
+      if (idx !== -1) {
+        state.tag.splice(idx, 1);
+      }
     },
     getTag: (state, action) => {
       state.tag = action.payload;
@@ -31,8 +35,8 @@ export const addTagDB = (tag: any) => {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     apis
       .CreateTag(tag)
-      .then((res) => {
-        dispatch(addTag);
+      .then((res: any) => {
+        dispatch(addTag({ tagName: res.data[0].tagName, id: res.data[0].id }));
       })
       .catch((err) => {
         console.error(err);
@@ -61,7 +65,7 @@ export const deleteTagDB = (id: number) => {
     apis
       .DeleteTag(id)
       .then((res) => {
-        dispatch(deleteTag);
+        dispatch(deleteTag(id));
       })
       .catch((err) => {
         console.error(err);
