@@ -8,7 +8,7 @@ const Home = (): React.ReactElement => {
   return (
     <Container padding='30px' height='100vh'>
       <Grid
-        width='400px'
+        width='100%'
         margin='0px -43px'
         height='180px'
         z='5'
