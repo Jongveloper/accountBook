@@ -24,7 +24,7 @@ const Month = (): React.ReactElement => {
 
   return path.includes('/home') ? (
     <MonthStyle>
-      <h1 style={{ marginTop: '40px', fontSize: '40px' }}>{today}</h1>
+      <h1 style={{ marginTop: '40px', fontSize: '30px' }}>{today}</h1>
     </MonthStyle>
   ) :
     <Grid>
