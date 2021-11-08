@@ -7,13 +7,7 @@ import { Container } from '../../elements'
 import { getCalendarDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import styled from '@emotion/styled';
-export const StyleWrapper = styled.div`
-  .fc .fc-daygrid-day-frame {
-  height: 82px;
-  overflow: auto;
-}
-`
+import { StyleWrapper } from './style';
 const Calendar = (): React.ReactElement => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user.user_info.username);
@@ -32,12 +26,12 @@ const Calendar = (): React.ReactElement => {
       z-index: 2;
       `;
     }}>
-      <div style={{ margin: '70px auto', padding: '0', width: '360px' }}>
+      <div style={{ margin: '70px auto', width: '95%' }}>
         <StyleWrapper>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView='dayGridMonth'
-            height='600px'
+            height='auto'
             events={data.flat()}
             locale='ko'
           />

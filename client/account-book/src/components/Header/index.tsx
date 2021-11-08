@@ -10,7 +10,7 @@ const Header = () => {
   return HeaderIncluded.includes(path) && !/signin/.test(path) ? (
     <HeaderStyle>
       <Container height='20px'>
-        <h1 style={{ zIndex: 3, textAlign: 'center', fontSize: '20px', marginTop: '0px', fontWeight: 'bold' }}>알뜰 살뜰 가계부</h1>
+        <h1 style={{ textAlign: 'center', fontSize: '20px', marginTop: '0px', fontWeight: 'bold' }}>알뜰 살뜰 가계부</h1>
       </Container>
     </HeaderStyle>
   ) : null
