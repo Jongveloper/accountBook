@@ -11,7 +11,8 @@ const color = {
 const deviceSize = {
   mobileXs: '281px',
   mobileS: '320px',
-  mobileM: '375px',
+  mobileM: '376px',
+  mobileMM: '450px',
   mobileL: '568px',
   tablet: '768px',
   desktop: '1024px',
@@ -21,7 +22,8 @@ const device = {
   mobileXs: `only screen and (max-width: ${deviceSize.mobileXs})`,
   mobileS: `only screen and (max-width: ${deviceSize.mobileS}) and (min-width: ${deviceSize.mobileXs})`,
   mobileM: `only screen and (max-width: ${deviceSize.mobileM}) and (min-width: ${deviceSize.mobileS})`,
-  mobileL: `only screen and (max-width: ${deviceSize.mobileL}) and (min-width: ${deviceSize.mobileM})`,
+  mobileMM: `only screen and (max-width: ${deviceSize.mobileMM}) and (min-width: ${deviceSize.mobileM})`,
+  mobileL: `only screen and (max-width: ${deviceSize.mobileL}) and (min-width: ${deviceSize.mobileMM})`,
   tablet: `only screen and (max-width: ${deviceSize.tablet}) and (min-width: ${deviceSize.mobileL})`,
   desktop: `only screen and (min-width: ${deviceSize.desktop})`,
 };
