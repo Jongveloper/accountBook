@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 //style
 import { css } from 'styled-components'
+import { SelectWrapper, AccountInfo } from './style';
 
 // mui
 import Box from '@mui/material/Box';
@@ -77,63 +78,68 @@ export default function SelectBox() {
 
   return (
     <Box sx={{ minWidth: 120, position: 'fixed', zIndex: 4 }}>
-      <FormControl>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-          Year
-        </InputLabel>
-        <NativeSelect
-          value={Year}
-          onChange={(e) => handleYearChange(e)}
-          sx={{ marginRight: '5px' }}
-        >
-          {year.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
-        </NativeSelect>
-      </FormControl>
-      <FormControl>
-        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-          Month
-        </InputLabel>
-        <NativeSelect
-          value={Month}
-          onChange={(e) => handleMonthChange(e)}
-        >
-          {month.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
-        </NativeSelect>
-      </FormControl>
-      <Button
-        border='none'
-        color='white'
-        width='60px'
-        margin='0 7px'
-        height='50px'
-        _onClick={() => { getDate() }}>조회</Button>
-      <Grid
-        isFlex
-        addstyle={() => {
-          return css`
+      <SelectWrapper>
+        <FormControl>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Year
+          </InputLabel>
+          <NativeSelect
+            value={Year}
+            onChange={(e) => handleYearChange(e)}
+            sx={{ marginRight: '5px' }}
+          >
+            {year.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
+          </NativeSelect>
+        </FormControl>
+        <FormControl>
+          <InputLabel variant="standard" htmlFor="uncontrolled-native">
+            Month
+          </InputLabel>
+          <NativeSelect
+            value={Month}
+            onChange={(e) => handleMonthChange(e)}
+          >
+            {month.map((i) => <option key={i + Math.floor(Math.random())} value={i}>{i}</option>)}
+          </NativeSelect>
+        </FormControl>
+        <Button
+          border='none'
+          color='white'
+          width='60px'
+          margin='0 7px'
+          height='50px'
+          _onClick={() => { getDate() }}>조회</Button>
+      </SelectWrapper>
+      <AccountInfo>
+        <Grid
+          isFlex
+          addstyle={() => {
+            return css`
           justify-content: flex-end;
           `
-        }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px -140px', zIndex: -4 }}>{Year}년 {Month}월</p>
-      </Grid>
-      <Grid
-        isFlex
-        addstyle={() => {
-          return css`
+          }}>
+          <p style={{ fontSize: '14px', fontWeight: 900, color: 'gray', margin: '-40px -140px', zIndex: -4 }}>{Year}년 {Month}월</p>
+        </Grid>
+        <Grid
+          isFlex
+          addstyle={() => {
+            return css`
           justify-content: flex-end;
           `
-        }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px -140px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
-      </Grid>
-      <Grid
-        isFlex
-        addstyle={() => {
-          return css`
+          }}>
+          <p style={{ fontSize: '14px', fontWeight: 900, color: '#B6C8A5', margin: '-25px -140px' }}>총 수입: ₩{totalIncome.totalIncome ? totalIncome.totalIncome.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        </Grid>
+        <Grid
+          isFlex
+          addstyle={() => {
+            return css`
           justify-content: flex-end;
           `
-        }}>
-        <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px -140px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
-      </Grid>
+          }}>
+          <p style={{ fontSize: '14px', fontWeight: 900, color: 'red', margin: '-10px -140px' }}>총 지출: ₩{totalExpenditure.total ? totalExpenditure.total.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</p>
+        </Grid>
+      </AccountInfo>
     </Box>
   );
 }
+
