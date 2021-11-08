@@ -29,6 +29,10 @@ const MonthStyle = styled.div<Prop>`
     width: 80%;
     margin: 20px 12%;
   }
+  @media ${(props) => props.theme.device.mobileMM} {
+    width: 80%;
+    margin: 20px 12%;
+  }
   @media ${(props) => props.theme.device.mobileL} {
     width: 80%;
     margin: 20px 12%;
