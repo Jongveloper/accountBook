@@ -25,14 +25,13 @@ const Chart = (): React.ReactElement => {
 
   return (
     <>
-      <Grid textAlign='center'>
+      <Grid width='70%' margin='auto'>
         <Grid
           textAlign='left'
         >
-          <h2 style={{ fontWeight: 'bold', fontSize: '25px', minHeight: '40px' }}>이번달 통계</h2>
+          <h2 style={{ fontWeight: 'bold', fontSize: '25px', marginLeft: '-25%', minHeight: '40px' }}>이번달 지출 통계</h2>
         </Grid>
         <PieChart
-          style={{ width: '320px' }}
           data={data.flat()}
           lineWidth={70}
           background='white'
@@ -47,7 +46,7 @@ const Chart = (): React.ReactElement => {
           labelPosition={80}
         />
       </Grid>
-      <Grid margin='35px 0 0 0' border='1px solid #B6C8A5'>
+      <Grid margin='35px 0 0 0' border='1px solid #B6C8A5' height='200px'>
         {statisticState.map((item: any, idx: number) => {
           return (
             item.expenditure === 0 ? null :
@@ -60,7 +59,7 @@ const Chart = (): React.ReactElement => {
             `;
                 }}>
 
-                <p style={{ fontWeight: 'bold', color: item.color, minHeight: '30px', marginRight: '100px' }}>
+                <p style={{ fontWeight: 'bold', color: item.color, minHeight: '30px', marginRight: '60px' }}>
                   {item.contents}</p>
 
                 <p style={{ color: 'black', minHeight: '30px', fontWeight: 'bold' }}>
