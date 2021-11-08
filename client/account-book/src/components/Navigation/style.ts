@@ -10,7 +10,6 @@ const NavigationStyle = styled.div<Prop>`
   display: flex;
   position: fixed;
   width: 100%;
-  max-width: 768px;
   left: 50%;
   bottom: 0;
   height: 80px;
