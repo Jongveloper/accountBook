@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import apis, { instance } from '../../../shared/api';
 import { getToken } from '../../../shared/token';
 import type { RootState } from '../../configureStore';
 
 const initialState = {
-  account: [{}],
+  account: [{ id: 0 }],
   expenditure: [{}],
   income: [{}],
   tag: [{}],
@@ -25,11 +25,15 @@ export const accountSlice = createSlice({
         day: action.payload.day,
         tag: action.payload.tag,
         color: action.payload.color,
+        id: action.payload.id,
       };
       state.account.push(account);
     },
-    deleteAccount: (state, action: PayloadAction<number>) => {
-      console.log('삭제');
+    deleteAccount: (state, action) => {
+      let idx = state.account.findIndex((r) => r.id === action.payload);
+      if (idx !== -1) {
+        state.account.splice(idx, 1);
+      }
     },
     getAccount: (state, action) => {
       state.account = action.payload;
@@ -110,7 +114,7 @@ export const deleteAccountDB = (id: number) => {
     apis
       .DeleteAccount(id)
       .then((res) => {
-        dispatch(deleteAccount);
+        dispatch(deleteAccount(id));
       })
       .catch((err) => {
         console.error(err);
