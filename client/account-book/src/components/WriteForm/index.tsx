@@ -103,13 +103,13 @@ const WriteForm = (): React.ReactElement => {
             <InputLabel
               variant="standard"
               htmlFor="uncontrolled-native"
-              sx={{ marginLeft: '20px' }}>
+              sx={{ marginLeft: '5px' }}>
               Year
             </InputLabel>
             <NativeSelect
               value={Year}
               onChange={(e) => handleYearChange(e)}
-              sx={{ marginRight: '20px', marginLeft: '20px', zIndex: 4 }}
+              sx={{ marginRight: '5px', marginLeft: '10px', zIndex: 4 }}
             >
               {year.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -123,7 +123,7 @@ const WriteForm = (): React.ReactElement => {
             <NativeSelect
               value={Month.toString().padStart(2, '0')}
               onChange={(e) => handleMonthChange(e)}
-              sx={{ marginRight: '20px', zIndex: 4 }}
+              sx={{ marginRight: '10px', zIndex: 4 }}
             >
               {month.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -137,7 +137,7 @@ const WriteForm = (): React.ReactElement => {
             <NativeSelect
               value={DateTime.toString().padStart(2, '0')}
               onChange={(e) => handleDateTimeChange(e)}
-              sx={{ marginRight: '20px', zIndex: 4 }}
+              sx={{ marginRight: '10px', zIndex: 4 }}
             >
               {dateTime.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
@@ -146,7 +146,8 @@ const WriteForm = (): React.ReactElement => {
             <FormControl
               style={{
                 marginTop: '20px',
-                width: '210px'
+                width: '210px',
+                marginLeft: '15px'
               }}>
               <InputLabel
                 variant="standard"
@@ -167,6 +168,7 @@ const WriteForm = (): React.ReactElement => {
       <WriteFormStyle>
         <Grid
           textAlign='center'
+          margin='-20px 0 0 0'
           addstyle={() => {
             return css`
             justify-content: space-between;
@@ -176,13 +178,12 @@ const WriteForm = (): React.ReactElement => {
           <Input
             border='2px solid #B6C8A5'
             width='200px'
-            margin='0 10px'
+            margin='10px 10px 0px 10px'
             type='number'
             height='40px'
             placeholder='0'
             _onChange={handleIncomeChange} />
         </Grid>
-
         <Grid
           textAlign='center'
           margin='40px 0 0 0'
@@ -197,7 +198,7 @@ const WriteForm = (): React.ReactElement => {
           <Input
             border='2px solid #B6C8A5'
             width='200px'
-            margin='0 10px'
+            margin='10px 10px 0px 10px'
             height='40px'
             type='number'
             placeholder='0'
@@ -218,13 +219,12 @@ const WriteForm = (): React.ReactElement => {
           <Input
             border='2px solid #B6C8A5'
             width='200px'
-            margin='0 10px'
+            margin='10px 10px 0px 10px'
             height='40px'
             placeholder='내용을 입력하세요.'
             _onChange={handleContentsChange} />
         </Grid>
-
-        <Grid textAlign='center'>
+        <Grid textAlign='center' height='200px'>
           <Button
             border='none'
             width='80px'

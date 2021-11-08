@@ -9,7 +9,7 @@ const WriteAccount = (): React.ReactElement => {
       <Grid textAlign='center' >
         <img src={Money} width='300px' height='250px' alt='이미지' />
       </Grid>
-      <Grid z='5'>
+      <Grid>
         <WriteForm />
       </Grid>
     </Container>
