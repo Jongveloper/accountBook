@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid } from '../../elements';
 import { AccountDateStyle, AccountContentStyle, AccountTagStyle, AccountIncomeStyle } from './style';
 // redux
-import { getMonthAccountDB } from '../../redux/modules/AccountModule/account';
+import { getMonthAccountDB, deleteAccountDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
 
 const AccountList = (): React.ReactElement => {
@@ -15,6 +15,9 @@ const AccountList = (): React.ReactElement => {
   useEffect(() => {
     dispatch(getMonthAccountDB(userState, month, year))
   }, [dispatch, userState, month, year])
+  const handleDelete = (id: number) => {
+    dispatch(deleteAccountDB(id))
+  }
   return (
     <>
       {accountState.map((account: any, idx: number) => {
@@ -28,6 +31,8 @@ const AccountList = (): React.ReactElement => {
                   <p>{parseInt(account.income).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
                 </AccountIncomeStyle>
                 <p style={{ color: 'red' }}>-{parseInt(account.expenditure).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
+                <p style={{ color: 'gray', marginTop: '2px', fontSize: '12px', cursor: 'pointer' }}
+                  onClick={() => { handleDelete(account.id) }}>삭제</p>
               </AccountDateStyle>
               <AccountContentStyle>
                 <p>{`₩ ${account.contents}`}</p>

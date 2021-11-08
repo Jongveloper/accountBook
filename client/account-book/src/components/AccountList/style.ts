@@ -31,7 +31,7 @@ const AccountIncomeStyle = styled.div<Prop>`
     margin-left: 50px;
   }
   @media ${(props) => props.theme.device.mobileM} {
-    margin-left: 100px;
+    margin-left: 70px;
   }
   @media ${(props) => props.theme.device.mobileMM} {
     margin-left: 150px;
