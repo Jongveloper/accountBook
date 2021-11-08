@@ -31,7 +31,6 @@ const TagForm = (): React.ReactElement => {
         placeholder='추가 할 태그를 입력해주세요'
         addstyle={() => {
           return css`
-          max-width: 300px;
           z-index: 4;
           `
         }}
