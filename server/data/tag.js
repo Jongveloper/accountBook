@@ -16,10 +16,6 @@ const Tag = sequelize.define('tag', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  color: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
 });
 Tag.belongsTo(User);
 
@@ -27,7 +23,6 @@ const INCLUDE_USER = {
   attributes: [
     'id',
     'tagName',
-    'color',
     'userId',
     'createdAt',
     [Sequelize.col('user.name'), 'name'],
@@ -68,7 +63,6 @@ export async function getById(id) {
 export async function create(tagName, color, userId) {
   return Tag.create({
     tagName,
-    color,
     userId,
   }).then((data) => this.getById(data.dataValues.id));
 }
@@ -76,7 +70,6 @@ export async function create(tagName, color, userId) {
 export async function update(id, tagName, color) {
   return Tag.findByPk(id).then((tag) => {
     tag.tagName = tagName;
-    tag.color = color;
     return tag.save();
   });
 }
