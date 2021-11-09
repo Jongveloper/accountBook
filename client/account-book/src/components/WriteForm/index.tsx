@@ -67,32 +67,19 @@ const WriteForm = (): React.ReactElement => {
   const [expenditure, setExpenditure] = useState('')
   const [contents, setContents] = useState('')
 
-  // 콤마
-  const inputPrice = (num: any) => {
-    const comma = (num: any) => {
-      num = String(num);
-      return num.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-    };
-    const uncomma = (num: any) => {
-      num = String(num);
-      return num.replace(/[^\d]+/g, "");
-    };
-    return comma(uncomma(num));
-  };
-
   const handleIncomeChange = (e: any) => {
-    setIncome(inputPrice(e.target.value))
+    setIncome(e.target.value)
   }
   const handleExpenditureChange = (e: any) => {
-    setExpenditure(inputPrice(e.target.value))
+    setExpenditure(e.target.value)
   }
   const handleContentsChange = (e: any) => {
     setContents(e.target.value)
   }
   // 날짜, 태그, 수입, 지출
   const account = {
-    income: income === '' ? 0 : parseInt(income.replace(/,/g, "")),
-    expenditure: expenditure === '' ? 0 : parseInt(expenditure.replace(/,/g, "")),
+    income: income === '' ? 0 : parseInt(income),
+    expenditure: expenditure === '' ? 0 : parseInt(expenditure),
     tag: `${Tag}`,
     year: parseInt(`${Year}`),
     month: parseInt(`${Month}`),
@@ -200,15 +187,10 @@ const WriteForm = (): React.ReactElement => {
             border='2px solid #B6C8A5'
             width='200px'
             margin='10px 10px 0px 10px'
+            type='number'
             height='40px'
             placeholder='0'
-            _onChange={handleIncomeChange}
-            addstyle={() => {
-              return css`
-              text-align: right;
-              `;
-            }} />
-          <span style={{ fontWeight: 700, marginLeft: '-8px' }}>원</span>
+            _onChange={handleIncomeChange} />
         </Grid>
         <Grid
           textAlign='center'
@@ -227,14 +209,9 @@ const WriteForm = (): React.ReactElement => {
             width='200px'
             margin='10px 10px 0px 10px'
             height='40px'
+            type='number'
             placeholder='0'
-            _onChange={handleExpenditureChange}
-            addstyle={() => {
-              return css`
-              text-align: right;
-              `;
-            }} />
-          <span style={{ fontWeight: 700, marginLeft: '-8px' }}>원</span>
+            _onChange={handleExpenditureChange} />
         </Grid>
 
         <Grid
