@@ -6,20 +6,14 @@ interface Prop {
   };
 }
 
-const SignUpFormStyle = styled.form<Prop>`
-  width: 100%;
-  height: 'auto';
-  margin: auto;
-
+export const FormWrap = styled.div<Prop>`
   @media ${(props) => props.theme.device.tablet} {
-    margin: 300px auto;
-    width: 100%;
+    margin: 180px auto;
+    width: 50%;
   }
 
   @media ${(props) => props.theme.device.desktop} {
-    margin: 400px auto;
+    margin: 300px auto;
     width: 35%;
   }
 `;
-
-export default SignUpFormStyle;
