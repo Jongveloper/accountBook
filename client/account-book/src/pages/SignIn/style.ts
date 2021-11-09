@@ -8,12 +8,12 @@ interface Prop {
 
 export const FormWrap = styled.div<Prop>`
   @media ${(props) => props.theme.device.tablet} {
-    margin: 180px auto;
+    margin: 150px auto;
     width: 50%;
   }
 
   @media ${(props) => props.theme.device.desktop} {
-    margin: 300px auto;
+    margin: 150px auto;
     width: 35%;
   }
 `;
