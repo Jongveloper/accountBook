@@ -9,7 +9,6 @@ export async function getTags(req, res) {
 export async function createTag(req, res, next) {
   const { tagName } = req.body;
   const tag = await tagRepository.create(tagName, req.userId);
-  console.log(tag);
   res.status(201).json(tag);
 }
 
