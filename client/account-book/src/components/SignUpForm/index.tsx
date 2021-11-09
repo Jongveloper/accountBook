@@ -38,7 +38,7 @@ const SignUpForm = (): React.ReactElement => {
         <h1 style={{ color: '#B6C8A5', fontWeight: 800, fontSize: '40px' }}>회원가입</h1>
       </Grid>
       <Grid
-        margin='100px 0 0 0'
+        margin='50px 0 0 0'
         textAlign='center'
       >
         <Input
