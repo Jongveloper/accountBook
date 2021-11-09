@@ -1,22 +1,23 @@
 import React, { useState, useCallback, useEffect } from 'react';
-//redux
-import {
-  getMonthAccountDB,
-  GetTotalMonthExpenditureDB,
-  GetTotalMonthIncomeDB
-}
-  from '../../redux/modules/AccountModule/account';
-import { useDispatch, useSelector } from 'react-redux';
-//style
+// element
+import { Button, Grid } from '../../elements/index'
+// style
 import { css } from 'styled-components'
 import { SelectWrapper, AccountInfo } from './style';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getMonthAccountDB,
+  getTotalMonthExpenditureDB,
+  getTotalMonthIncomeDB
+}
+  from '../../redux/modules/AccountModule/account';
 
 // mui
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
-import { Button, Grid } from '../../elements/index'
 
 
 export default function SelectBox() {
@@ -50,8 +51,8 @@ export default function SelectBox() {
 
   const userState = useSelector((state) => state.user.user_info.username)
   const getDate = useCallback(() => {
-    dispatch(GetTotalMonthIncomeDB(userState, Month, Year))
-    dispatch(GetTotalMonthExpenditureDB(userState, Month, Year))
+    dispatch(getTotalMonthIncomeDB(userState, Month, Year))
+    dispatch(getTotalMonthExpenditureDB(userState, Month, Year))
     dispatch(getMonthAccountDB(userState, Month, Year))
   }, [dispatch, userState, Month, Year])
 
@@ -63,7 +64,7 @@ export default function SelectBox() {
 
 
   useEffect(() => {
-    dispatch(GetTotalMonthIncomeDB(userState, sendMonth, sendYear))
+    dispatch(getTotalMonthIncomeDB(userState, sendMonth, sendYear))
   }, [dispatch, userState, sendMonth, sendYear])
 
 
@@ -73,7 +74,7 @@ export default function SelectBox() {
 
 
   useEffect(() => {
-    dispatch(GetTotalMonthExpenditureDB(userState, sendMonth, sendYear))
+    dispatch(getTotalMonthExpenditureDB(userState, sendMonth, sendYear))
   }, [dispatch, userState, sendMonth, sendYear])
 
   return (

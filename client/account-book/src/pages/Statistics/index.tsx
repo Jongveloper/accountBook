@@ -1,5 +1,7 @@
 import React from 'react';
+// element
 import { Container, Grid } from '../../elements';
+// component
 import Chart from '../../components/Chart';
 
 const Statistics = (): React.ReactElement => {

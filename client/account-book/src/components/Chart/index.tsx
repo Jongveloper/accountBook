@@ -1,10 +1,13 @@
-import { PieChart } from 'react-minimal-pie-chart';
 import { useEffect } from 'react';
+// element
 import { Grid } from '../../elements'
+// style
 import { css } from 'styled-components'
-import { getStatisticsDB } from '../../redux/modules/AccountModule/account';
+// PieChart
+import { PieChart } from 'react-minimal-pie-chart';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
+import { getStatisticsDB } from '../../redux/modules/AccountModule/account';
 const Chart = (): React.ReactElement => {
   const dispatch = useDispatch();
   const statisticState = useSelector((state) => state.account.statistics)

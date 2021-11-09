@@ -126,7 +126,7 @@ export const deleteAccountDB = (id: number) => {
   };
 };
 
-export const GetTotalMonthExpenditureDB = (
+export const getTotalMonthExpenditureDB = (
   username: string,
   month: number,
   year: number
@@ -146,7 +146,7 @@ export const GetTotalMonthExpenditureDB = (
   };
 };
 
-export const GetTotalMonthIncomeDB = (
+export const getTotalMonthIncomeDB = (
   username: string,
   month: number,
   year: number

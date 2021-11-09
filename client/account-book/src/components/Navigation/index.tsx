@@ -1,15 +1,17 @@
 import React from 'react';
+// element
+import { Grid, Button } from '../../elements';
+// style
+import { NavigationStyle, NavigationIcons } from './style';
 import { css } from 'styled-components'
-import { history } from '../../redux/configureStore';
-import { useLocation } from 'react-router';
 // material-icon
 import HomeIcon from '@material-ui/icons/Home'
 import Chart from '@material-ui/icons/PieChart'
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-//style
-import { Grid, Button } from '../../elements';
-import { NavigationStyle, NavigationIcons } from './style';
+// route
+import { history } from '../../redux/configureStore';
+import { useLocation } from 'react-router';
 //path
 import { HeaderIncluded } from '../../route/Path';
 

@@ -1,12 +1,12 @@
 import React from 'react';
-//style
-import SignUpFormStyle from './style';
-//elements
+// elements
 import { Input, Grid, Button } from '../../elements';
-//package
+// style
+import SignUpFormStyle from './style';
+// Yup, Formik
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-//redux
+// redux
 import { useDispatch } from 'react-redux';
 import { signUpDB } from '../../redux/modules/UserModule/user';
 
@@ -23,7 +23,7 @@ const SignUpForm = (): React.ReactElement => {
         .min(4, '아이디는 4자리 이상이어야 합니다.')
         .required('아이디를 입력해주세요'),
       password: Yup.string()
-        .min(4, '비밀번호는 4자리 이상이어야합니다.')
+        .min(8, '비밀번호는 8자리 이상이어야합니다.')
         .required('비밀번호를 입력해주세요.'),
       name: Yup.string()
         .required('닉네임을 입력해주세요')

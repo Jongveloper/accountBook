@@ -1,6 +1,8 @@
 import React from 'react';
-import HeaderStyle from './style';
+// element
 import { Container } from '../../elements';
+// style
+import HeaderStyle from './style';
 //router
 import { HeaderIncluded } from '../../route/Path';
 import { useLocation } from 'react-router-dom';
