@@ -4,7 +4,7 @@ import { getToken } from '../../../shared/token';
 import type { RootState } from '../../configureStore';
 
 const initialState = {
-  tag: [{ tagName: '', color: '', id: 0 }],
+  tag: [{ tagName: '', id: 0 }],
 };
 
 export const tagSlice = createSlice({
@@ -13,9 +13,8 @@ export const tagSlice = createSlice({
   reducers: {
     addTag: (state, action) => {
       const tagName = action.payload.tagName;
-      const color = action.payload.color;
       const id = action.payload.id;
-      state.tag.push({ tagName, color, id });
+      state.tag.push({ tagName, id });
     },
     deleteTag: (state, action) => {
       let idx = state.tag.findIndex((r) => r.id === action.payload);

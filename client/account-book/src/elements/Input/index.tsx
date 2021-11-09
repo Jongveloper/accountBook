@@ -15,7 +15,7 @@ export interface Props {
   type?: string;
   margin?: string;
   name?: string;
-  value?: string;
+  value?: string | number;
   accept?: string;
   placeholder?: string;
   _onChange?: any;
