@@ -6,19 +6,17 @@ import { addTagDB } from '../../redux/modules/TagModule/tag';
 import { useDispatch } from 'react-redux';
 const TagForm = (): React.ReactElement => {
   const dispatch = useDispatch();
-  const randomColor = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600']
   let [tag, setTag] = useState({
     tagName: '',
-    color: ''
   });
   const $tag = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTag({
-      tagName: e.target.value,
-      color: randomColor[Math.floor(Math.random() * 5)]
+      tagName: e.target.value
     })
   }
   const handleAddTag = () => {
     dispatch(addTagDB(tag))
+    setTag({ tagName: '' })
   }
   return (
     <TagFormStyle>
@@ -29,6 +27,7 @@ const TagForm = (): React.ReactElement => {
         margin='0 5px 20px 5px'
         border='5px solid #B6C8A5'
         placeholder='추가 할 태그를 입력해주세요'
+        value={tag.tagName}
         addstyle={() => {
           return css`
           z-index: 4;
