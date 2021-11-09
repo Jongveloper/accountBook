@@ -1,13 +1,17 @@
+import { useEffect } from 'react';
+// element
+import { Container } from '../../elements'
+// style
+import { css } from 'styled-components'
+import { StyleWrapper } from './style';
+// FullCalendar
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { css } from 'styled-components'
-import { Container } from '../../elements'
-import { getCalendarDB } from '../../redux/modules/AccountModule/account';
+// redux
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { StyleWrapper } from './style';
+import { getCalendarDB } from '../../redux/modules/AccountModule/account';
 const Calendar = (): React.ReactElement => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user.user_info.username);

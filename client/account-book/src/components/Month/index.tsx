@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
+// router
 import { useLocation } from 'react-router';
-import MonthStyle from './style';
+// element
 import { Grid } from '../../elements';
+// style
+import MonthStyle from './style';
 
 //redux
-import { getMonthExTagDB } from '../../redux/modules/AccountModule/account';
 import { useDispatch, useSelector } from 'react-redux';
+import { getMonthExTagDB } from '../../redux/modules/AccountModule/account';
+
 const Month = (): React.ReactElement => {
   const dispatch = useDispatch();
   const dt = new Date()

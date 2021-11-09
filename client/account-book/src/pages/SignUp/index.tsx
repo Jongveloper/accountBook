@@ -1,7 +1,11 @@
 import React from 'react'
+// element
 import { Grid, Container } from '../../elements'
-import SignUpForm from '../../components/SignUpForm';
+// style
 import { css } from 'styled-components'
+// component
+import SignUpForm from '../../components/SignUpForm';
+
 const SignUp = (): React.ReactElement => {
   return (
     <Container addstyle={() => {

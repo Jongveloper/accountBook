@@ -1,9 +1,13 @@
 import React from 'react';
-import { css } from 'styled-components'
+// element
 import { Container, Grid } from '../../elements'
+// style
+import { css } from 'styled-components'
+// component
 import Month from '../../components/Month';
 import SelectBox from '../../components/SelectBox'
 import AccountList from '../../components/AccountList';
+
 const Home = (): React.ReactElement => {
   return (
     <Container padding='30px' height='100vh'>

@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
+// element
 import { Container, Grid } from '../../elements';
+// style
+import { css } from 'styled-components'
+import { ImageWrapper, MonthWrapper } from './style';
+// img
+import Money from '../../img/money-image.png'
+// component
 import TagForm from '../../components/TagForm';
 import TagList from '../../components/TagList';
 import Month from '../../components/Month';
-import Money from '../../img/money-image.png'
-import { css } from 'styled-components'
-import { ImageWrapper, MonthWrapper } from './style';
+// redux
 import { useDispatch, useSelector } from 'react-redux';
 import { getTagDB } from '../../redux/modules/TagModule/tag';
 

@@ -1,8 +1,11 @@
 import React from 'react';
+// element
 import { Container, Grid } from '../../elements';
-import WriteForm from '../../components/WriteForm'
-// image
+// img
 import Money from '../../img/money-image.png'
+// component
+import WriteForm from '../../components/WriteForm'
+
 const WriteAccount = (): React.ReactElement => {
   return (
     <Container padding='30px' height='50vh'>

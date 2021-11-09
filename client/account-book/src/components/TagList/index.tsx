@@ -1,10 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// element
+import { Button, Grid } from '../../elements';
+// style
+import { css } from 'styled-components'
 import { TagListStyle } from './style';
 //redux
+import { useDispatch } from 'react-redux';
 import { deleteTagDB } from '../../redux/modules/TagModule/tag';
-import { Button, Grid } from '../../elements';
-import { css } from 'styled-components'
 
 interface Props {
   tagData: any

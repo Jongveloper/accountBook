@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+// element
 import { Button, Input } from '../../elements';
+// style
 import { TagFormStyle } from './style';
 import { css } from 'styled-components';
-import { addTagDB } from '../../redux/modules/TagModule/tag';
+// redux
 import { useDispatch } from 'react-redux';
+import { addTagDB } from '../../redux/modules/TagModule/tag';
+
 const TagForm = (): React.ReactElement => {
   const dispatch = useDispatch();
   let [tag, setTag] = useState({
