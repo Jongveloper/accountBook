@@ -28,4 +28,3 @@ export const config = {
     password: required('DB_PASSWORD'),
   },
 };
-console.log('dd');

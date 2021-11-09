@@ -7,4 +7,3 @@ export const sequelize = new SQ.Sequelize(database, user, password, {
   dialect: 'mysql',
   logging: false,
 });
-console.log('dd');
