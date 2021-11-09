@@ -8,6 +8,10 @@ export async function getTags(req, res) {
 
 export async function createTag(req, res, next) {
   const { tagName } = req.body;
+  const found = await tagRepository.findByTagName(tagName);
+  if (found) {
+    return res.status(409).json({ message: `${tagName} already exists` });
+  }
   const tag = await tagRepository.create(tagName, req.userId);
   res.status(201).json(tag);
 }

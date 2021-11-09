@@ -38,9 +38,12 @@ export const addTagDB = (tag: any) => {
         dispatch(addTag({ tagName: res.data[0].tagName, id: res.data[0].id }));
       })
       .catch((err) => {
-        window.alert(
-          '태그 작성에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
-        );
+        if (err.response.status === 409)
+          window.alert('이미 존재하는 태그입니다!');
+        else
+          window.alert(
+            '태그 작성에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
+          );
       });
   };
 };
