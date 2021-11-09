@@ -59,8 +59,8 @@ const WriteForm = (): React.ReactElement => {
     dispatch(getTagDB(userState))
   }, [dispatch, userState])
   // 수입, 지출, 내용
-  const [income, setIncome] = useState('0')
-  const [expenditure, setExpenditure] = useState('0')
+  const [income, setIncome] = useState('')
+  const [expenditure, setExpenditure] = useState('')
   const [contents, setContents] = useState('')
 
   const handleIncomeChange = (e: any) => {
@@ -74,8 +74,8 @@ const WriteForm = (): React.ReactElement => {
   }
   // 날짜, 태그, 수입, 지출
   const account = {
-    income: income === null ? 0 : parseInt(income),
-    expenditure: expenditure === null ? 0 : parseInt(expenditure),
+    income: income === '' ? 0 : parseInt(income),
+    expenditure: expenditure === '' ? 0 : parseInt(expenditure),
     tag: `${Tag}`,
     year: parseInt(`${Year}`),
     month: parseInt(`${Month}`),
@@ -90,6 +90,9 @@ const WriteForm = (): React.ReactElement => {
       return
     }
     dispatch(addAccountDB(account))
+    setIncome('')
+    setExpenditure('')
+    setContents('')
     alert('작성이 완료되었습니다!')
   }
   return (
@@ -176,6 +179,7 @@ const WriteForm = (): React.ReactElement => {
           }}>
           <label style={{ fontWeight: 'bold', color: '#B6C8A5' }}>수입</label>
           <Input
+            value={income}
             border='2px solid #B6C8A5'
             width='200px'
             margin='10px 10px 0px 10px'
@@ -196,6 +200,7 @@ const WriteForm = (): React.ReactElement => {
             style={{ fontWeight: 'bold', color: 'red' }}
           >지출</label>
           <Input
+            value={expenditure}
             border='2px solid #B6C8A5'
             width='200px'
             margin='10px 10px 0px 10px'
@@ -218,6 +223,7 @@ const WriteForm = (): React.ReactElement => {
           >내용</label>
           <Input
             border='2px solid #B6C8A5'
+            value={contents}
             width='200px'
             margin='10px 10px 0px 10px'
             height='40px'
