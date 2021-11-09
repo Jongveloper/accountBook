@@ -14,4 +14,3 @@ export const sequelize = new SQ.Sequelize(database, user, password, {
     },
   },
 });
-console.log('dd');

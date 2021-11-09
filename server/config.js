@@ -29,4 +29,3 @@ export const config = {
     port: required('DB_PORT'),
   },
 };
-console.log('dd');
