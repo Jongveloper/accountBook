@@ -19,10 +19,6 @@ const TagForm = (): React.ReactElement => {
     })
   }
   const handleAddTag = () => {
-    if (tag.tagName === '') {
-      alert('태그를 입력해주세요!')
-      return
-    }
     dispatch(addTagDB(tag))
     setTag({ tagName: '' })
   }

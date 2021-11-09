@@ -79,7 +79,3 @@ export async function remove(id) {
     tag.destroy();
   });
 }
-
-export async function findByTagName(tagName) {
-  return Tag.findOne({ where: { tagName } });
-}
