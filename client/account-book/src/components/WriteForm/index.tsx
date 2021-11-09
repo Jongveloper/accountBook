@@ -49,7 +49,11 @@ const WriteForm = (): React.ReactElement => {
   // 태그 선택
   const tagState = useSelector((state) => state.tag.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-  const randomColor = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600']
+  const randomColor =
+    ['#003f5c', '#58508d',
+      '#bc5090', '#ff6361',
+      '#ffa600', '#ff7c43',
+      '#f95d6a', '#d45087',]
   const [Tag, setTag] = useState(tagState[0] ? tagState[0].tagName : '')
   const handleTagChange = (e: any) => {
     setTag(e.target.value)
@@ -81,7 +85,7 @@ const WriteForm = (): React.ReactElement => {
     month: parseInt(`${Month}`),
     day: parseInt(`${DateTime}`),
     contents,
-    color: randomColor[Math.floor(Math.random() * 5)]
+    color: randomColor[Math.floor(Math.random() * 8)]
   }
   // Account 추가 이벤트
   const handleAddAccount = () => {
