@@ -60,14 +60,14 @@ export async function getById(id) {
   });
 }
 
-export async function create(tagName, color, userId) {
+export async function create(tagName, userId) {
   return Tag.create({
     tagName,
     userId,
   }).then((data) => this.getById(data.dataValues.id));
 }
 
-export async function update(id, tagName, color) {
+export async function update(id, tagName) {
   return Tag.findByPk(id).then((tag) => {
     tag.tagName = tagName;
     return tag.save();
