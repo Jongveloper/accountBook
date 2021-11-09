@@ -209,6 +209,7 @@ const WriteForm = (): React.ReactElement => {
               text-align: right;
               `
             }} />
+          <span style={{ fontWeight: 700, marginLeft: '-8px' }}>원</span>
         </Grid>
         <Grid
           textAlign='center'
@@ -234,6 +235,7 @@ const WriteForm = (): React.ReactElement => {
               text-align: right;
               `
             }} />
+          <span style={{ fontWeight: 700, marginLeft: '-8px' }}>원</span>
         </Grid>
 
         <Grid
