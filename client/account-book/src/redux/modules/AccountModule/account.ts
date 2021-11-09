@@ -73,7 +73,9 @@ export const addAccountDB = (account: any) => {
         dispatch(addAccount);
       })
       .catch((err) => {
-        console.error(err);
+        window.alert(
+          '글 작성에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
+        );
       });
   };
 };
@@ -104,7 +106,7 @@ export const getAccountDB = (username: string) => {
         dispatch(getAccount(account));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert('오류가 발생했어요! 잠시후 다시 시도 부탁드립니다.');
       });
   };
 };
@@ -117,7 +119,9 @@ export const deleteAccountDB = (id: number) => {
         dispatch(deleteAccount(id));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert(
+          '글 삭제에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
+        );
       });
   };
 };
@@ -137,7 +141,7 @@ export const GetTotalMonthExpenditureDB = (
         dispatch(getTotalMonthExpenditure(expenditure));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert('오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.');
       });
   };
 };
@@ -157,7 +161,7 @@ export const GetTotalMonthIncomeDB = (
         dispatch(getTotalMonthIncome(income));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert('오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.');
       });
   };
 };

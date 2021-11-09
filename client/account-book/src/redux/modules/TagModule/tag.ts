@@ -39,7 +39,9 @@ export const addTagDB = (tag: any) => {
         dispatch(addTag({ tagName: res.data[0].tagName, id: res.data[0].id }));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert(
+          '태그 작성에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
+        );
       });
   };
 };
@@ -55,7 +57,7 @@ export const getTagDB = (username: string) => {
         dispatch(getTag(tag));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert('오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.');
       });
   };
 };
@@ -68,7 +70,9 @@ export const deleteTagDB = (id: number) => {
         dispatch(deleteTag(id));
       })
       .catch((err) => {
-        console.error(err);
+        window.alert(
+          '태그 삭제에 오류가 생겼어요! 잠시후 다시 시도 부탁드립니다.'
+        );
       });
   };
 };
