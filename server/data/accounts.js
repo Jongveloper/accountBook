@@ -162,12 +162,12 @@ export async function getTotalIncome(username) {
 export async function getMonth(username, year, month) {
   return Account.findAll({
     ...INCLUDE_USER,
-    ...ORDER_DESC,
     include: {
       ...INCLUDE_USER.include,
       where: { username },
     },
     where: { year, month },
+    order: [['day', 'DESC']],
   });
 }
 
