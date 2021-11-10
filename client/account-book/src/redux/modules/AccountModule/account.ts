@@ -7,7 +7,7 @@ const initialState = {
   account: [{ id: 0 }],
   expenditure: [{}],
   income: [{}],
-  tag: [{}],
+  tag: [{ tagName: '태그를 선택해주세요!' }],
   statistics: [{}],
   calendar: [{}],
 };

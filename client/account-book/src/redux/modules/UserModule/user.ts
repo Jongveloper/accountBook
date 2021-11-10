@@ -40,8 +40,10 @@ export const signUpDB = (user_info: SignUpType) => async () => {
     await apis.SignUp(user);
     history.push('/');
   } catch (err: any) {
-    console.log(err);
-    window.alert('이미 존재하는 아이디입니다.');
+    if (err.response.status === 409) {
+      window.alert('이미 존재하는 아이디입니다.');
+      window.location.reload();
+    }
   }
 };
 
@@ -56,8 +58,9 @@ export const SignInDB = (userInfo: SignInType) => {
         history.push('/home');
       })
       .catch((err) => {
-        if (err.response.status === 400 || err.response.status === 401)
-          window.alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+        window.alert(
+          '존재하지 않는 아이디거나 아이디 혹은 비밀번호가 일치하지 않습니다.'
+        );
       });
   };
 };
