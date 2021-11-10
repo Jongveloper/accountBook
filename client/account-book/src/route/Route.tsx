@@ -1,10 +1,12 @@
 import React from 'react';
+// route
 import { Switch } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import { pathURI } from './Path';
-
-//pages
+// element
+import { Section } from '../elements';
+// pages
 import SignIn from '../pages/SignIn';
 import Home from '../pages/Home';
 import Calendar from '../components/Calendar';
@@ -13,7 +15,6 @@ import Statistics from '../pages/Statistics';
 import Info from '../pages/Info';
 import SignUp from '../pages/SignUp';
 
-import { Section } from '../elements';
 const Route = () => {
   return (
     <>

@@ -1,12 +1,14 @@
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
-import { history } from '../redux/configureStore';
-
+// Api Types
 import { SignInType, SignUpType, TagType, AccountType } from './ApiTypes';
-
-import { getToken, delToken, setToken } from './token';
+// Info
 import { setUserInfo, delUserInfo } from './userInfo';
-
+// redux
+import { history } from '../redux/configureStore';
+// axios
+import axios from 'axios';
+// jwt / token
+import { getToken, delToken, setToken } from './token';
+import jwtDecode from 'jwt-decode';
 export const instance = axios.create({
   baseURL: ' https://account-ac.herokuapp.com/',
   withCredentials: true,
