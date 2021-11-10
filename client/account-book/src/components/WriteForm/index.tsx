@@ -54,11 +54,10 @@ const WriteForm = (): React.ReactElement => {
       '#bc5090', '#ff6361',
       '#ffa600', '#ff7c43',
       '#f95d6a', '#d45087',]
-  const [Tag, setTag] = useState(tagState[0] ? tagState[0].tagName : '')
+  const [Tag, setTag] = useState('')
   const handleTagChange = (e: any) => {
     setTag(e.target.value)
   }
-
   useEffect(() => {
     dispatch(getTagDB(userState))
   }, [dispatch, userState])
@@ -66,7 +65,6 @@ const WriteForm = (): React.ReactElement => {
   const [income, setIncome] = useState('')
   const [expenditure, setExpenditure] = useState('')
   const [contents, setContents] = useState('')
-
   // 콤마
   const inputPrice = (num: any) => {
     const comma = (num: any) => {
@@ -163,27 +161,30 @@ const WriteForm = (): React.ReactElement => {
               {dateTime.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
           </FormControl>
-          <Grid textAlign='center'>
-            <FormControl
-              style={{
-                marginTop: '20px',
-                width: '210px',
-                marginLeft: '15px'
-              }}>
-              <InputLabel
-                variant="standard"
-                htmlFor="uncontrolled-native">
-                태그 선택
-              </InputLabel>
-              <NativeSelect
-                value={Tag}
-                sx={{ zIndex: 4 }}
-                onChange={(e) => handleTagChange(e)}
-              >
-                {tagState.map((tag: any) => <option key={tag.id} value={tag.tagName}>{tag.tagName}</option>)}
-              </NativeSelect>
-            </FormControl>
-          </Grid>
+          {tagState[0].tagName === '' ? null :
+            <Grid textAlign='center'>
+              <FormControl
+                style={{
+                  marginTop: '20px',
+                  width: '210px',
+                  marginLeft: '15px'
+                }}>
+                <InputLabel
+                  variant="standard"
+                  htmlFor="uncontrolled-native">
+                  태그 선택
+                </InputLabel>
+                <NativeSelect
+                  value={Tag}
+                  sx={{ zIndex: 4 }}
+                  onChange={(e) => handleTagChange(e)}
+                >
+                  <option value={'태그를 선택해주세요!'}>태그를 선택해주세요</option>
+                  {tagState.map((tag: any) => <option key={tag.id} value={tag.tagName === '' ? null : tag.tagName}>{tag.tagName === '' ? null : tag.tagName}</option>)}
+                </NativeSelect>
+              </FormControl>
+            </Grid>
+          }
         </Box>
       </Grid>
       <WriteFormStyle>
