@@ -8,7 +8,7 @@ import { getToken, delToken, setToken } from './token';
 import { setUserInfo, delUserInfo } from './userInfo';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: ' https://account-ac.herokuapp.com/',
   withCredentials: true,
   timeout: 3000,
 });
