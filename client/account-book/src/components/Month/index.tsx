@@ -20,7 +20,6 @@ const Month = (): React.ReactElement => {
 
   const tagState = useSelector((state) => state.account.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-  console.log(tagState.total)
 
   useEffect(() => {
     dispatch(getMonthExTagDB(userState, month, year))
