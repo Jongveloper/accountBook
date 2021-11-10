@@ -65,7 +65,6 @@ const WriteForm = (): React.ReactElement => {
   const [income, setIncome] = useState('')
   const [expenditure, setExpenditure] = useState('')
   const [contents, setContents] = useState('')
-  console.log(Tag)
   // 콤마
   const inputPrice = (num: any) => {
     const comma = (num: any) => {
