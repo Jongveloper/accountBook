@@ -161,7 +161,7 @@ const WriteForm = (): React.ReactElement => {
               {dateTime.map((i) => <option key={i} value={i}>{i}</option>)}
             </NativeSelect>
           </FormControl>
-          {tagState[0].tagName === '' ? null :
+          {tagState === [] ? null :
             <Grid textAlign='center'>
               <FormControl
                 style={{
@@ -179,7 +179,7 @@ const WriteForm = (): React.ReactElement => {
                   sx={{ zIndex: 4 }}
                   onChange={(e) => handleTagChange(e)}
                 >
-                  <option value={'태그를 선택해주세요!'}>태그를 선택해주세요</option>
+                  <option value={''}></option>
                   {tagState.map((tag: any) => <option key={tag.id} value={tag.tagName === '' ? null : tag.tagName}>{tag.tagName === '' ? null : tag.tagName}</option>)}
                 </NativeSelect>
               </FormControl>
