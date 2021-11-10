@@ -20,7 +20,7 @@ const Month = (): React.ReactElement => {
 
   const tagState = useSelector((state) => state.account.tag)
   const userState = useSelector((state) => state.user.user_info.username)
-
+  console.log(tagState.total)
 
   useEffect(() => {
     dispatch(getMonthExTagDB(userState, month, year))
@@ -35,7 +35,7 @@ const Month = (): React.ReactElement => {
       <MonthStyle>
         <h1 style={{ color: 'black', fontWeight: 700, marginTop: '20px', minHeight: '20px' }}>이번 달 가장 많은 지출</h1>
         <strong style={{ color: 'red', fontSize: '20px' }}>{tagState.tag} </strong>
-        <p style={{ marginTop: '20px' }}>해당 태그의 총지출: {Number(tagState.total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
+        <p style={{ marginTop: '20px' }}>해당 태그의 총지출: {tagState.total === undefined ? 0 : Number(tagState.total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
       </MonthStyle>
     </Grid>
 }
