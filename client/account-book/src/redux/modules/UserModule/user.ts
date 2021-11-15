@@ -38,12 +38,10 @@ export const signUpDB = (user_info: SignUpType) => async () => {
   };
   try {
     await apis.SignUp(user);
+    window.alert('회원가입이 완료되었습니다!');
     history.push('/');
   } catch (err: any) {
-    if (err.response.status === 409) {
-      window.alert('이미 존재하는 아이디입니다.');
-      window.location.reload();
-    }
+    window.alert('이미 존재하는 아이디입니다.');
   }
 };
 
