@@ -20,7 +20,7 @@ export const ImageWrapper = styled.div<Prop>`
     height: 80px;
   }
   @media ${(props) => props.theme.device.mobileM} {
-    margin: 0 20px 40px 16%;
+    margin: 0 20px 40px 12%;
   }
   @media ${(props) => props.theme.device.mobileMM} {
     margin: 0;
@@ -31,7 +31,7 @@ export const ImageWrapper = styled.div<Prop>`
   }
 
   @media ${(props) => props.theme.device.tablet} {
-    width: 650px;
+    width: 600px;
     margin: 20px 70px;
   }
 
@@ -54,8 +54,8 @@ export const MonthWrapper = styled.div<Prop>`
     height: 80px;
   }
   @media ${(props) => props.theme.device.mobileM} {
-    width: 365px;
-    margin: 0 0 0 -6%;
+    width: 340px;
+    margin: 0 0 0 -20px;
   }
   @media ${(props) => props.theme.device.mobileMM} {
     width: 415px;
@@ -68,7 +68,7 @@ export const MonthWrapper = styled.div<Prop>`
 
   @media ${(props) => props.theme.device.tablet} {
     width: 100%;
-    margin: 20px 10px;
+    margin: 20px -40px;
   }
 
   @media ${(props) => props.theme.device.desktop} {

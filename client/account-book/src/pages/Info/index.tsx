@@ -22,9 +22,10 @@ const Info = (): React.ReactElement => {
     dispatch(getTagDB(userState))
   }, [dispatch, userState])
   return (
-    <Container padding='30px' height='auto' addstyle={() => {
+    <Container padding='30px' addstyle={() => {
       return css`
       z-index: 2;
+      height: 100%;
       `;
     }}>
       <ImageWrapper>
