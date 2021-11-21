@@ -26,7 +26,7 @@ const TagListStyle = styled.ul<Prop>`
   }
   @media ${(props) => props.theme.device.mobileM} {
     height: 300px;
-    margin-left: 6%;
+    margin-left: 1%;
   }
   @media ${(props) => props.theme.device.mobileMM} {
     height: 300px;
@@ -37,8 +37,8 @@ const TagListStyle = styled.ul<Prop>`
   }
 
   @media ${(props) => props.theme.device.tablet} {
-    width: 595px;
-    margin: 0 85px;
+    width: 600px;
+    margin: 0 30px;
   }
 
   @media ${(props) => props.theme.device.desktop} {

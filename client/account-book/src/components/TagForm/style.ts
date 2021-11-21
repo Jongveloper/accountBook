@@ -20,7 +20,7 @@ const TagFormStyle = styled.form<Prop>`
     height: 80px;
   }
   @media ${(props) => props.theme.device.mobileM} {
-    width: 100vw;
+    width: 340px;
     margin-top: -20px;
   }
   @media ${(props) => props.theme.device.mobileMM} {
@@ -32,7 +32,7 @@ const TagFormStyle = styled.form<Prop>`
   }
 
   @media ${(props) => props.theme.device.tablet} {
-    width: 100%;
+    width: 600px;
     margin: 0 auto 0 100px;
   }
 
